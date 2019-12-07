@@ -1,0 +1,3 @@
+parase_journal_job:
+  cron: "*/1 * * * *"
+  class: "ParseJournalWorker"

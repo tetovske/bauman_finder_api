@@ -33,8 +33,13 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Sidekiq for async stuff
 gem 'sidekiq'
+# Schedule tasks
+gem 'sidekiq-cron'
 # Special for sidekiq
 gem 'sinatra', github: 'sinatra/sinatra'
+
+# Create schedules
+gem 'whenever', :require => false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
