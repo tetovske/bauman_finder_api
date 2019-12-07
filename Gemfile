@@ -19,8 +19,22 @@ gem 'puma', '~> 4.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'webpacker', '~> 4.0'
+
+gem 'jbuilder', '~> 2.7'
+
+# For stylesheets :)
+gem 'sass-rails', '~> 5'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+
+gem 'bcrypt-ruby', '~> 3.1.2'
+
+# Sidekiq for async stuff
+gem 'sidekiq'
+# Special for sidekiq
+gem 'sinatra', github: 'sinatra/sinatra'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
@@ -28,6 +42,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # rails c helper
+  gem 'pry-rails'
 end
 
 group :development do
