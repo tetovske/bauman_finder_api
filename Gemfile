@@ -47,6 +47,10 @@ gem 'interactor'
 # For pdf parsing
 gem 'pdf-reader'
 
+# Dry style 
+gem 'dry-monads'
+gem 'dry-transaction'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
