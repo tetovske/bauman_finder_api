@@ -1,19 +1,20 @@
 require 'dry/transaction'
 
-class DocParser::TestDry < Service
-  include Dry::Transaction
+class DocParser::TestDry
   include Dry::Monads::Result::Mixin
+  include Dry::Monads::Do.for(:test)
 
-  step :prepare
-  step :solve
+  def test
+    o = yield func1
 
-  private
-
-  def prepare(input)
-    Success(50)
+    Success(10)
   end
 
-  def solve(input)
-    Success[50, 70, 30]
+  def func1
+    Failure('Error')
+  end
+
+  def func2
+    Success(10)
   end
 end
