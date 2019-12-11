@@ -5,6 +5,6 @@ class TestController < ApplicationController
   def output
     value = params[:n]
     # @response = TestFolder::TestInteractor.call(input: value).res
-    @response = RequestHandler.call(5)
+    @response = KeyKeeper.call('doc_parser_config').value!
   end
 end

@@ -1,25 +1,26 @@
 # frozen_string_literal: true
 
-require 'yaml'
-require 'pdf-reader'
-
 # Decree parser module
 module DocParser
   # Service object for decree pasring
   class DecreeParser < Service
-    step :init_parser
-    step :parse_docs
+    include Dry::AutoInject(Container)[
+      key_keeper: 'services.key_keeper',
+      pdf_parser: 'services.pdf_reader',
+      yaml: 'services.yaml_parser'
+    ]
+
+    def call
+      config_path = yield key_keeper.call('doc_parser_config')
+      # TODO: СДЕЛАТЬ БЛЯТЬ УЖЕ ЭТОТ ЕБУЧИЙ ПАРСЕР НАХУЙ
+    end
 
     private
 
-    def init_parser(_input, config_path:)
-      Try { YAML.load_file(config_path)['docs'] }
+    def init_parser(config_path:)
+      Try { yaml.load_file(config_path)['docs'] }
         .bind { |file| Success(file) }
         .or(Failure(:init_parser))
-    end
-
-    def convert_doc(docs_config, doc_path:)
-      
     end
 
     def parse_docs(docs_config, doc_path:)
@@ -29,7 +30,6 @@ module DocParser
           find_by_regex(parsed.value!, doc['regex'])
         end.value_or([])
       end
-
     end
 
     def find_by_regex(data, regex)

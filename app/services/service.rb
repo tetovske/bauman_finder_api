@@ -1,9 +1,8 @@
+# frozen_string_literal: true
+
 # Parent class for service objects
 class Service
-  include Dry::Monads::Maybe::Mixin
-  include Dry::Monads::Result::Mixin
-  include Dry::Monads::Try::Mixin
-  include Dry::Transaction
+  include Dry::Monads[:maybe, :result, :do, :try]
 
   def handle_issue(error, return_value)
     puts "An error occured: #{error}"

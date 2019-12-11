@@ -1,0 +1,2 @@
+- doc_parser_config: '#{Rails.root}/config/doc_parser_config.yaml'
+- decrees_docs_path: '#{Rails.root}/app/data/decrees'

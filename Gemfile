@@ -50,6 +50,8 @@ gem 'pdf-reader'
 # Dry style 
 gem 'dry-monads'
 gem 'dry-transaction'
+gem 'dry-container'
+gem 'dry-auto_inject'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
