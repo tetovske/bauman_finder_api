@@ -13,6 +13,12 @@ class Container
     end
   end
 
+  namespace 'models' do
+    register 'student' do
+      Student
+    end
+  end
+
   namespace 'services' do
     register 'key_keeper' do
       KeyKeeper 
@@ -23,7 +29,7 @@ class Container
     end
 
     register 'pdf_reader' do
-      PDF::Reader.new
+      PDF::Reader
     end
   end
 end

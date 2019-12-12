@@ -24,7 +24,8 @@ class KeyKeeper < Service
   end
 
   def find_by_key(data, resource_key)
-    Maybe(data.first[resource_key]).bind do |value|
+    puts data
+    Maybe(data[resource_key]).bind do |value|
       Success(value)
     end.or(Failure(:key_does_not_exists))
   end

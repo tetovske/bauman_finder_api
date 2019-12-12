@@ -12,33 +12,45 @@ module DocParser
 
     def call
       config_path = yield key_keeper.call('doc_parser_config')
-      # TODO: СДЕЛАТЬ БЛЯТЬ УЖЕ ЭТОТ ЕБУЧИЙ ПАРСЕР НАХУЙ
+      decrees_path = yield key_keeper.call('decrees_docs_path')
+      config = yield init_parser("#{Rails.root}#{config_path}")
+      stud_resords = yield parse_doc(config, "#{Rails.root}#{decrees_path}")
+      stud_resords
     end
 
-    private
-
-    def init_parser(config_path:)
+    def init_parser(config_path)
       Try { yaml.load_file(config_path)['docs'] }
         .bind { |file| Success(file) }
-        .or(Failure(:init_parser))
+        .or(Failure(:init_parser_fail))
     end
 
-    def parse_docs(docs_config, doc_path:)
-      students = docs_config.map do |doc|
-        path = "#{doc_path}/#{doc['year']}/#{doc['file_name']}"
-        parse_pdf(path).bind do |parsed|
-          find_by_regex(parsed.value!, doc['regex'])
-        end.value_or([])
+    def parse_doc(docs_config, doc_path)
+      data = docs_config.map do |cnf|
+        txt = yield parse_pdf("#{doc_path}/#{cnf['year']}/#{cnf['file_name']}")
+        students = yield find_by_regex(txt, cnf['regexes'])
+        students.map do |stud|
+          stud['year'] = cnf['year']
+          stud['form_of_study'] = cnf['form_of_study']
+          stud
+        end
       end
+      Success(data.reduce { |a, b| a + b })
     end
 
     def find_by_regex(data, regex)
-      Maybe(regex.map { |reg| data.scan(Regexp.new(reg)) }
-        .reduce { |x, y| x + y }).to_result
+      students = regex.map do |reg|
+        data.scan(Regexp.new(reg['regex'])).map do |el|
+          model = reg['model']
+          return Failure(:regex_error) unless el.size == model.size
+
+          model.zip(el).to_h
+        end
+      end
+      Success(students.reduce { |a, b| a + b })
     end
 
     def parse_pdf(file_path)
-      Try { PDF::Reader.new(file_path).pages.map(&:text).join }
+      Try { pdf_parser.new(file_path).pages.map(&:text).join }
         .bind { |data| Success(data) }
         .or(Failure(:file_reading))
     end

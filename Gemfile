@@ -53,6 +53,9 @@ gem 'dry-transaction'
 gem 'dry-container'
 gem 'dry-auto_inject'
 
+# Haml
+gem 'haml'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
