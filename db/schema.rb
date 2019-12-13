@@ -10,32 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_220905) do
+ActiveRecord::Schema.define(version: 2019_12_13_171343) do
+
+  create_table "form_of_studies", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "students", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "identifire"
-    t.string "name"
+    t.string "first_name"
     t.string "last_name"
     t.string "mid_name"
-    t.string "group"
-    t.string "company"
-    t.string "identifier"
+    t.string "id_stud"
+    t.string "id_abitur"
     t.decimal "exam_scores"
+    t.integer "form_of_study_id"
+    t.integer "group_id"
+    t.index ["form_of_study_id"], name: "index_students_on_form_of_study_id"
+    t.index ["group_id"], name: "index_students_on_group_id"
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.string "str"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
+  add_foreign_key "students", "form_of_studies"
+  add_foreign_key "students", "groups"
 end

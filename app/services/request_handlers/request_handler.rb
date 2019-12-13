@@ -7,12 +7,8 @@ module RequestHandlers
       parser: 'doc_parser.decree_parser'
     ]
 
-    CONFIG_FILE = "#{Rails.root}/config/doc_parser_config.yaml"
-    DOC_PATH = "#{Rails.root}/app/data/decrees"
-
     def call
-      # update_decree_data
-      5
+      
     end
 
     private
