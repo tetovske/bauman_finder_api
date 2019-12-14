@@ -2,20 +2,45 @@
 
 require 'yaml'
 require 'pdf-reader'
+require 'selenium-webdriver'
 
 # Main container with all dependencies
 class Container
   extend Dry::Container::Mixin
 
-  namespace 'doc_parser' do
-    register 'decree_parser' do
-      DocParser::DecreeParser
+  namespace 'parsers' do
+    namespace 'doc_parser' do
+      register 'decree_parser' do
+        Parsers::DocParser::DecreeParser
+      end
+    end
+
+    namespace 'web_parser' do
+      register 'web_vpn_parser' do
+        Parsers::WebParser::WebVpnParser
+      end
+    end
+
+    register 'data_validator' do
+      Parsers::DataValidator
     end
   end
 
   namespace 'models' do
     register 'student' do
       Student
+    end
+
+    register 'company' do
+      Company
+    end
+
+    register 'group' do
+      Group
+    end
+
+    register 'form_of_study' do
+      FormOfStudy
     end
   end
 
@@ -30,6 +55,10 @@ class Container
 
     register 'pdf_reader' do
       PDF::Reader
+    end
+
+    register 'selenium' do
+      Selenium::WebDriver
     end
   end
 end

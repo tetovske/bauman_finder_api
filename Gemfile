@@ -56,6 +56,9 @@ gem 'dry-auto_inject'
 # Haml
 gem 'haml'
 
+# For web parsing
+gem 'selenium-webdriver'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
