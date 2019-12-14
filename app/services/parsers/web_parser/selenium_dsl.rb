@@ -24,13 +24,26 @@ module Parsers
         self.driver.navigate.to(path)
       end
 
-      def await
+      def await_presence(event)
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        wait.until { !yield }
+        wait.until { presence(event).call }
+      end
+
+      def presence(element)
+        -> { !driver.find_elements(element).empty? }
+      end
+
+      def fill_field(elem, content)
+        driver.find_elements(elem).first.send_keys content
+      end
+
+      def click_on(elem)
+        driver.find_elements(elem).first.click
       end
 
       def teardown_parser
-        self.driver.quit!
+        self.driver.quit
+        Success()
       end
     end
   end
