@@ -3,6 +3,8 @@
 require 'yaml'
 require 'pdf-reader'
 require 'selenium-webdriver'
+require 'nokogiri'
+require 'mechanize'
 
 # Main container with all dependencies
 class Container
@@ -18,6 +20,10 @@ class Container
     namespace 'web_parser' do
       register 'web_vpn_parser' do
         Parsers::WebParser::WebVpnParser
+      end
+
+      register 'web_scraping' do
+        Parsers::WebParser::WebScraping
       end
     end
 
@@ -59,6 +65,10 @@ class Container
 
     register 'selenium' do
       Selenium::WebDriver
+    end
+
+    register 'mechanize' do 
+      Mechanize
     end
   end
 end

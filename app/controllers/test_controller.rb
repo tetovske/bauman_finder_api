@@ -6,6 +6,6 @@ class TestController < ApplicationController
   def output
     value = params[:n]
     # @response = TestFolder::TestInteractor.call(input: value).res
-    @response = ParserManager.call.update_decree_data
+    @response = Parsers::WebParser::WebScraping.call
   end
 end
