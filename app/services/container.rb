@@ -5,6 +5,7 @@ require 'pdf-reader'
 require 'selenium-webdriver'
 require 'nokogiri'
 require 'mechanize'
+require 'jwt'
 
 # Main container with all dependencies
 class Container
@@ -22,13 +23,21 @@ class Container
         Parsers::WebParser::WebVpnParser
       end
 
-      register 'web_scraping' do
-        Parsers::WebParser::WebScraping
-      end
+      
     end
 
     register 'data_validator' do
       Parsers::DataValidator
+    end
+
+    register 'scraper' do
+      Parsers::WebParser::WebScraping
+    end
+  end
+
+  namespace 'other' do
+    register 'token_manager' do
+      Other::JwtDecoder
     end
   end
 
@@ -52,7 +61,7 @@ class Container
 
   namespace 'services' do
     register 'key_keeper' do
-      KeyKeeper 
+      KeyKeeper
     end
 
     register 'yaml_parser' do 
@@ -67,8 +76,12 @@ class Container
       Selenium::WebDriver
     end
 
-    register 'mechanize' do 
+    register 'scraping_api' do 
       Mechanize
+    end
+
+    register 'jwt' do
+      JWT
     end
   end
 end

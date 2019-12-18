@@ -1,11 +1,12 @@
 class TestController < ApplicationController
   include Parsers
 
-  def input; end
+  def input
+    auth_key = request.headers['token']
+    render :json => { header: auth_key }
+  end
 
   def output
-    value = params[:n]
-    # @response = TestFolder::TestInteractor.call(input: value).res
-    @response = Parsers::WebParser::WebScraping.call
+    ParserManager.call.update_webvpn_data
   end
 end

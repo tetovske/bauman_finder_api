@@ -10,7 +10,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2016
@@ -24,7 +24,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2016
@@ -38,7 +38,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2016
@@ -52,7 +52,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2016
@@ -66,7 +66,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
           - 'company'
       - regex: '§\d+\.\s*([а-яА-Я]+)\s*([а-яА-Я]+)\s*([а-яА-Я]+);.+иента\s*№:\s*([^;]+);.+ента\s*№:\s*([^;]+);.+ппа:\s*([а-яА-Я]+[^;]+);'
@@ -76,7 +76,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
 
   - year: 2017
     form_of_study: "budget"
@@ -89,7 +89,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2017
@@ -103,7 +103,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2017
@@ -117,7 +117,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2017
@@ -131,7 +131,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
           - 'company'
       - regex: '§\d+\.\s*([а-яА-Я]+)\s*([а-яА-Я]+)\s*([а-яА-Я]+);.+иента\s*№:\s*([^;]+);.+ента\s*№:\s*([^;]+);.+ппа:\s*([а-яА-Я]+[^;]+);'
@@ -141,7 +141,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
 
   - year: 2018
     form_of_study: "budget"
@@ -154,7 +154,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2018
@@ -168,7 +168,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2018
@@ -182,7 +182,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2018
@@ -196,7 +196,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2018
@@ -210,7 +210,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
           - 'company'
       - regex: '§\d+\.\s*([а-яА-Я]+)\s*([а-яА-Я]+)\s*([а-яА-Я]+);.+иента\s*№:\s*([^;]+);.+ента\s*№:\s*([^;]+);.+ппа:\s*([а-яА-Я]+[^;]+);'
@@ -220,7 +220,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
 
   - year: 2019
     form_of_study: "budget"
@@ -233,7 +233,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2019
@@ -247,7 +247,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2019
@@ -261,7 +261,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2019
@@ -275,7 +275,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
 
   - year: 2019
@@ -289,7 +289,7 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'
           - 'exam_scores'
           - 'company'
       - regex: '§\d+\.\s*([а-яА-Я]+)\s*([а-яА-Я]+)\s*([а-яА-Я]+);.+иента\s*№:\s*([^;]+);.+ента\s*№:\s*([^;]+);.+ппа:\s*([а-яА-Я]+[^;]+);'
@@ -299,4 +299,4 @@ docs:
           - 'mid_name'
           - 'id_abitur'
           - 'id_stud'
-          - 'group'
+          - 'group_adm'

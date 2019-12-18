@@ -5,6 +5,7 @@ module Parsers
   class ParserManager < Service
     include Dry::AutoInject(Container)[
       'parsers.doc_parser.decree_parser',
+      'parsers.scraper',
       'parsers.data_validator'
     ]
 
@@ -15,6 +16,11 @@ module Parsers
     def update_decree_data
       decree_data = yield decree_parser.call
       data_validator.call(decree_data, :decree_data)
+    end
+
+    def update_webvpn_data
+      data = yield scraper.call
+      data_validator.call(data, :web_data)
     end
   end
 end

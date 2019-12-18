@@ -8,7 +8,13 @@ class KeyKeeper < Service
 
   KEEPER_PATH = "#{Rails.root}/config/key_keeper.yaml"
 
-  def call(resource_key)
+  def call
+    file = yield parse_keeper_file
+
+    Success(file)
+  end
+
+  def get_key(resource_key)
     parsed_file = yield parse_keeper_file
     result_data = yield find_by_key(parsed_file, resource_key)
 
@@ -24,7 +30,6 @@ class KeyKeeper < Service
   end
 
   def find_by_key(data, resource_key)
-    puts data
     Maybe(data[resource_key]).bind do |value|
       Success(value)
     end.or(Failure(:key_does_not_exists))
