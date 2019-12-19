@@ -1,0 +1,106 @@
+<%# !!! 5
+%html
+  %head
+    %title BaumanFinder
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  %body
+    %p.notice= notice
+    %p.alert= alert
+    = yield %>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>BaumanFinder</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet"> 
+</head>
+
+<body>
+  <nav class="navbar header is-spaced" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item logo" href="https://localhost:3000">
+          BaumanFinder
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item">
+            <button class="navbar-item button is-info is-light is-rounded">
+              Об API
+            </button>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Документация
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                BaumanFinder API
+              </a>
+              <a class="navbar-item">
+                JWT запросы
+              </a>
+              <a class="navbar-item">
+                Запросы с использованием токена
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Простейшие запросы
+              </a>
+              <a class="navbar-item">
+                Поиск по группам
+              </a>
+              <a class="navbar-item">
+                Сортировки
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-light is-rounded">
+                Войти
+              </a>
+              <a class="button is-success is-light is-rounded">
+                Зарегистрироваться
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="wrapper">
+    <section class="section">
+      <div class="container has-text-centered main-page-content">
+        <p class="main-page-title">Найдутся все!</p>
+        <p class="main-page-subtitle">И даже отчисленные...</p>
+      </div>
+    </section>
+  </div>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Зачетная работа</strong> by <strong>ыуа</strong>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>

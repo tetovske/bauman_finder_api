@@ -62,7 +62,6 @@ module Parsers
     end
 
     def update_webvpn_data(data)
-      p "data: #{data}"
       data.each do |rec|
         record = student.new(
           first_name: rec[:first_name],
@@ -75,11 +74,8 @@ module Parsers
         if record.valid?
           record.save
         else
-          stud = student.find_by(id_stud: rec[:id_stud])
+          stud = student.find_by(id_stud: rec[:id_stud])  
           stud.update(
-            first_name: rec[:first_name],
-            last_name: rec[:last_name],
-            mid_name: rec[:mid_name],
             subject_data: rec[:subject_data],
             group_id: detect_group(rec[:group])
           ) unless stud.nil?
@@ -89,7 +85,8 @@ module Parsers
 
     def detect_group(name)
       grp = group.find_by(name: name)
-      grp.id unless grp.nil?
+      grp = group.new(name: name).save if grp.nil?
+      grp.id
     end
   end
 end

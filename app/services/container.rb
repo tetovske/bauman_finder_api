@@ -22,8 +22,6 @@ class Container
       register 'web_vpn_parser' do
         Parsers::WebParser::WebVpnParser
       end
-
-      
     end
 
     register 'data_validator' do

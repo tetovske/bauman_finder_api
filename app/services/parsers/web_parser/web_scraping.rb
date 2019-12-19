@@ -86,10 +86,10 @@ module Parsers
 
       def generate_record(name, id, group, subj_info)
         {
-          first_name: name.first,
-          last_name: name.second,
+          last_name: name.first,
+          first_name: name.second,
           mid_name: name.third,
-          stud_id: id,
+          id_stud: id,
           group: group,
           subject_data: subj_info
         }

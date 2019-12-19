@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_002455) do
+ActiveRecord::Schema.define(version: 2019_12_19_020837) do
 
   create_table "companies", force: :cascade do |t|
     t.string "company_name"
@@ -40,9 +40,11 @@ ActiveRecord::Schema.define(version: 2019_12_18_002455) do
     t.string "id_abitur"
     t.decimal "exam_scores"
     t.integer "form_of_study_id"
-    t.integer "group_id"
     t.integer "group_adm_id"
     t.string "subject_data"
+    t.integer "group_id"
+    t.integer "company_id"
+    t.index ["company_id"], name: "index_students_on_company_id"
     t.index ["form_of_study_id"], name: "index_students_on_form_of_study_id"
     t.index ["group_adm_id"], name: "index_students_on_group_adm_id"
     t.index ["group_id"], name: "index_students_on_group_id"
@@ -54,16 +56,13 @@ ActiveRecord::Schema.define(version: 2019_12_18_002455) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "students", "companies"
   add_foreign_key "students", "form_of_studies"
   add_foreign_key "students", "groups"
   add_foreign_key "students", "groups", column: "group_adm_id"

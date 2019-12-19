@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => '/sidekiq'
 
-  root 'test#input', :as => 'input'
+  root 'page#home', :as => 'home'
   get 'test/output', :as => 'output'
 
   # resources :auth, only: [:create, :destroy, :login]

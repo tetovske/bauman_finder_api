@@ -1,3 +1,3 @@
 class FormOfStudy < ApplicationRecord
-  has_one :student
+  has_many :students
 end

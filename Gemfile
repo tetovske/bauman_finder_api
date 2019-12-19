@@ -69,6 +69,8 @@ gem 'selenium-webdriver'
 gem 'mechanize'
 gem 'nokogiri'
 
+gem "bulma-rails", "~> 0.8.0"
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
