@@ -34,7 +34,7 @@ module Parsers
           id_stud: stud[:id_stud],
           id_abitur: stud[:id_abitur],
           exam_scores: stud[:exam_scores].to_i,
-          form_of_study: study_f.find_by(title: stud[:form_of_study]),
+          form_of_study_id: study_f.find_by(title: stud[:form_of_study]).id,
           group_adm_id: group.find_by(name: stud[:group_adm]).id
         )
         if record.valid?
@@ -47,7 +47,7 @@ module Parsers
             last_name: stud[:last_name],
             mid_name: stud[:mid_name],
             exam_scores: stud[:exam_scores].to_i,
-            form_of_study: study_f.find_by(title: stud[:form_of_study]),
+            form_of_study_id: study_f.find_by(title: stud[:form_of_study]).id,
             group_adm_id: group.find_by(name: stud[:group_adm]).id
           ) unless upd.nil?
         end

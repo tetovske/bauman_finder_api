@@ -1,6 +1,6 @@
 decree_parser:
   doc_parser_config: '/config/doc_parser_config.yaml'
-  decrees_docs_path: '/app/data/decrees'
+  decrees_docs_path: '/storage/data/decrees'
 web:
   groups:
     'ИУ6-31Б': 'group/8e243850-3d75-11e8-9f9b-005056960017/'

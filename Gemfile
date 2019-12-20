@@ -85,6 +85,7 @@ group :development, :test do
 
   # rails c helper
   gem 'pry-rails'
+  gem 'capybara'
 end
 
 group :development do

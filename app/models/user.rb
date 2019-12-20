@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :token, uniqueness: true
+  validates :token, :email, uniqueness: true
 
   class << self
     def create_user(params)
