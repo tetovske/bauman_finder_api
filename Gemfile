@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.1'
+gem 'rails', '6.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
@@ -20,7 +20,6 @@ gem 'sass-rails', '~> 5'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'sprockets', '~> 3'
-gem 'turbolinks', '~> 5'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -51,8 +50,6 @@ gem 'interactor'
 gem 'pdf-reader'
 
 # For registration
-gem 'devise'
-gem "devise-async"
 gem 'jwt'
 
 # Dry style 
@@ -64,11 +61,17 @@ gem 'dry-auto_inject'
 # Haml
 gem 'haml'
 
+gem 'devise'
+
 # For web parsing
 gem 'selenium-webdriver'
 gem 'mechanize'
 gem 'nokogiri'
 
+# Internationalization
+gem 'rails-i18n', '~> 6.0.0'
+
+# CSS lib
 gem "bulma-rails", "~> 0.8.0"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible

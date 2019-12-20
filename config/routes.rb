@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :users
   require 'sidekiq/web'
   require 'sidekiq/cron/web'
 
   mount Sidekiq::Web => '/sidekiq'
 
-  root 'page#home', :as => 'home'
-  get 'test/output', :as => 'output'
+  scope "(:region)", region: /#{I18n.available_locales.join('|')}/ do
+    get 'test/output', :as => 'output'
 
-  # resources :auth, only: [:create, :destroy, :login]
-  # resources :user, only: [:create, :destroy, :update]
+    get 'sigin' => 'auth#auth', :as => 'signin'
+    get 'auth' => 'auth#authorize_user', :as => 'auth'
+    get 'sigoun' => 'auth#sign_out', :as => 'sign_out'
 
-  get 'auth' => 'auth#create', :as => 'authorize_user'
-  post 'users/create' => 'user#create', :as => 'user_create'
+    root 'page#home', :as => 'home'
+
+    resources :users
+  end
 end

@@ -75,7 +75,8 @@ module Parsers
           record.save
         else
           stud = student.find_by(id_stud: rec[:id_stud])  
-          stud.update(
+          student.update(
+            stud.id,
             subject_data: rec[:subject_data],
             group_id: detect_group(rec[:group])
           ) unless stud.nil?

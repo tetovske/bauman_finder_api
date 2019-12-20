@@ -1,38 +1,31 @@
-<header class="header">
-  <div class="container">
-    <nav class="level">
-      <div class="level-left">
-        <div class="level-item">
-          My App
-        </div>
-      </div>
-      <div class="level-right">
-      </div>
-    </nav>
+<nav class="level after-header">
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading"><%= t 'home_page.after_header.students_in' %></p>
+      <p class="title">> 10K</p>
+    </div>
   </div>
-</header>
-<section class="section">
-  <div class="container">
-    <div class="title">Название</div>
-    <div class="subtitle">Сабтайтл</div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading"><%= t 'home_page.after_header.updates' %></p>
+      <p class="title"><%= t 'home_page.after_header.updates_txt' %></p>
+    </div>
   </div>
-  <div class="columns">
-  <div class="column">
-    First column
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading"><%= t 'home_page.after_header.users' %></p>
+      <p class="title">> 0</p>
+    </div>
   </div>
-  <div class="column">
-    Second column
-  </div>
-  <div class="column">
-    Third column
-  </div>
-  <div class="column">
-    Fourth column
-  </div>
+</nav>
+<p class="notice">user: <%= current_user %></p>
+<p class="alert">sign_in? <%= user_signed_in? %></p>
+<p class="alert">sign_in? <%= signed_in? %></p>
+<div id="wrapper">
+  <section class="section">
+    <div class="container has-text-centered main-page-content">
+      <p class="main-page-title"><%= t 'home_page.body.main_txt' %></p>
+      <p class="main-page-subtitle"><%= t 'home_page.body.after_main_txt' %></p>
+    </div>
+  </section>
 </div>
-</section>
-<footer class="footer">
-  <div class="container">
-    Copyright © 2019 MyApp. All rights reserved.
-  </div>
-</footer>

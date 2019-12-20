@@ -1,0 +1,9 @@
+<div class="input-form">
+  <%= form_tag auth_url, method: 'get' do %>
+    <%= label_tag 'Логин' %>
+    <%= text_field_tag :login, '', class: 'input-field' %></br>
+    <%= label_tag 'Пароль' %>
+    <%= password_field_tag :pass, '', class: 'input-field' %></br>
+    <%= submit_tag 'Войти', class: 'button-def' %></br></br>
+  <% end %>
+</div>

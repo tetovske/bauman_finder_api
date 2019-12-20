@@ -17,16 +17,16 @@
   <title>BaumanFinder</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet"> 
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': false %>
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet"> 
 </head>
 
 <body>
   <nav class="navbar header is-spaced" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item logo" href="https://localhost:3000">
-          BaumanFinder
+        <a class="navbar-item logo" href="/">
+          <p>BaumanFinder</p>
         </a>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -40,16 +40,16 @@
         <div class="navbar-start">
           <div class="navbar-item">
             <button class="navbar-item button is-info is-light is-rounded">
-              Об API
+              <%= t 'home_page.about_api' %>
             </button>
           </div>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              Документация
+              <%= t 'home_page.doc' %>
             </a>
             <div class="navbar-dropdown">
               <a class="navbar-item">
-                BaumanFinder API
+                <%= t :doc %>
               </a>
               <a class="navbar-item">
                 JWT запросы
@@ -73,31 +73,26 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-light is-rounded">
-                Войти
-              </a>
-              <a class="button is-success is-light is-rounded">
-                Зарегистрироваться
-              </a>
+                
             </div>
           </div>
         </div>
+        <div class="navbar-item">
+            <button class="navbar-item button is-light is-link is-rounded">
+              <%= link_to 'RU', region: :ru %>
+            </button>
+            <button class="navbar-item button is-light is-danger is-rounded">
+              <%= link_to 'EN', region: :en %>
+            </button>
+          </div>
       </div>
     </div>
   </nav>
-  <div id="wrapper">
-    <section class="section">
-      <div class="container has-text-centered main-page-content">
-        <p class="main-page-title">Найдутся все!</p>
-        <p class="main-page-subtitle">И даже отчисленные...</p>
-      </div>
-    </section>
-  </div>
+  <%= yield %>
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>Зачетная работа</strong> by <strong>ыуа</strong>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        <strong><%= t 'home_page.footer.work_info' %></strong> by <strong>Дасов Тит (ИУ6-33Б)</strong>.
       </p>
     </div>
   </footer>

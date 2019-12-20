@@ -38,5 +38,6 @@ module BaumanFinderApi
     config.active_job.queue_adapter = :sidekiq
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Flash
+    config.i18n.available_locales = [:ru, :en]
   end
 end
