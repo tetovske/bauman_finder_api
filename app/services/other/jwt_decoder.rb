@@ -27,7 +27,7 @@ module Other
 
     def decode_key(token)
       Try { jwt.decode token, SECRET_KEY, ALGORITHM }
-        .bind { |data| Success(data) }
+        .bind { |data| Success(data.first) }
         .or(Failure(:invalid_token))
     end
   end

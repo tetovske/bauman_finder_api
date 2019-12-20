@@ -52,6 +52,8 @@ gem 'pdf-reader'
 # For registration
 gem 'jwt'
 
+gem 'rspec-rails'
+
 # Dry style 
 gem 'dry-monads'
 gem 'dry-transaction'

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :users
   require 'sidekiq/web'
   require 'sidekiq/cron/web'
 
@@ -7,13 +6,14 @@ Rails.application.routes.draw do
 
   scope "(:region)", region: /#{I18n.available_locales.join('|')}/ do
     get 'test/output', :as => 'output'
-
-    get 'sigin' => 'auth#auth', :as => 'signin'
-    get 'auth' => 'auth#authorize_user', :as => 'auth'
-    get 'sigoun' => 'auth#sign_out', :as => 'sign_out'
-
     root 'page#home', :as => 'home'
+  end
 
-    resources :users
+  scope module: 'api', path: 'api', defaults: { format: :json } do
+    resources :auth, only: [:create]
+    post '/signup' => 'user#create'
+    delete '/signout' => 'auth#signout'
+    get '/find' => 'find#find'
   end
 end
+

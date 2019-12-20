@@ -1,29 +1,26 @@
-# frozen_string_literal: true
-
-require 'digest'
-
-# User model
 class User < ApplicationRecord
-  validates :login, uniqueness: true
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
+  validates :token, uniqueness: true
 
   class << self
-    def authenticate(login, pass)
-      usr = User.find_by(email: login)
-      return nil if usr.nil?
-      return usr if usr.check_passw?(pass)
-    end
-
     def create_user(params)
-      data = params[:user]
-      hash = Digest::SHA256.hexdigest(data[:pass])
-      hash_d = Digest::SHA256.hexdigest(data[:pass_d])
-      return User.new unless hash == hash_d
-
-      create(email: data[:login], password: hash)
+      user = User.new(
+        email: params[:email],
+        password: params[:password],
+        password_confirmation: params[:password_confirmation]
+      )
+      user.token = Other::JwtDecoder.call.encode_key(
+        { 
+          user_email: user.email,
+          expires: Time.now + 5.hours.to_i
+        }
+      ).value!
+      user.save if user.valid?
+      user.valid? ? user : false
     end
-  end
-
-  def check_passw?(password)
-    password_digest == Digest::SHA256.hexdigest(password)
   end
 end

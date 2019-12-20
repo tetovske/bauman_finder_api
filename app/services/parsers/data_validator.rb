@@ -69,7 +69,7 @@ module Parsers
           mid_name: rec[:mid_name],
           id_stud: rec[:id_stud],
           group_id: detect_group(rec[:group]),
-          subject_data: rec[:subject_data]
+          subject_data: rec[:subject_data].to_json
         )
         if record.valid?
           record.save
@@ -77,7 +77,7 @@ module Parsers
           stud = student.find_by(id_stud: rec[:id_stud])  
           student.update(
             stud.id,
-            subject_data: rec[:subject_data],
+            subject_data: rec[:subject_data].to_json,
             group_id: detect_group(rec[:group])
           ) unless stud.nil?
         end
