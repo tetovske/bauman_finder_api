@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title BaumanFinder
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': false
+    link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet" /
+  body
+    nav.navbar.header.is-spaced aria-label=("main navigation") role="navigation" 
+      .container
+        .navbar-brand
+          a.navbar-item.logo href="/" 
+            p BaumanFinder
+          a.navbar-burger.burger aria-expanded="false" aria-label="menu" data-target="navbarBasicExample" role="button" 
+            span aria-hidden="true" 
+            span aria-hidden="true" 
+            span aria-hidden="true" 
+        #navbarBasicExample.navbar-menu
+          .navbar-start
+            .navbar-item
+              button.navbar-item.button.is-info.is-light.is-rounded
+                = t 'home_page.about_api'
+            .navbar-item.has-dropdown.is-hoverable
+              a.navbar-link
+                = t 'home_page.doc'
+              .navbar-dropdown
+                a.navbar-item
+                  = t :doc
+                a.navbar-item
+                  | JWT запросы
+                a.navbar-item
+                  | Запросы с использованием токена
+                hr.navbar-divider/
+                a.navbar-item
+                  | Простейшие запросы
+                a.navbar-item
+                  | Поиск по группам
+                a.navbar-item
+                  | Сортировки
+          .navbar-end
+            .navbar-item
+              .buttons
+          .navbar-item
+            button.navbar-item.button.is-light.is-link.is-rounded
+              = link_to 'RU', region: :ru
+            button.navbar-item.button.is-light.is-danger.is-rounded
+              = link_to 'EN', region: :en
+    p
+      = current_user.nil?
+    = yield
+    footer.footer
+      .content.has-text-centered
+        p
+          strong= t 'home_page.footer.work_info'

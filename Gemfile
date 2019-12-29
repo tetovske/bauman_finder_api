@@ -26,8 +26,6 @@ gem 'sprockets', '~> 3'
 
 gem 'webpacker', '~> 4.0'
 
-gem 'jbuilder', '~> 2.7'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -60,10 +58,13 @@ gem 'dry-transaction'
 gem 'dry-container'
 gem 'dry-auto_inject'
 
-# Haml
+# slim
+gem 'slim-rails'
 gem 'haml'
 
 gem 'devise'
+
+gem 'news-api'
 
 # For web parsing
 gem 'selenium-webdriver'
@@ -74,7 +75,7 @@ gem 'nokogiri'
 gem 'rails-i18n', '~> 6.0.0'
 
 # CSS lib
-gem "bulma-rails", "~> 0.8.0"
+gem 'bulma-rails', '~> 0.8.0'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'

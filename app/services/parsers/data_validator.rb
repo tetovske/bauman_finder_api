@@ -34,21 +34,20 @@ module Parsers
           id_stud: stud[:id_stud],
           id_abitur: stud[:id_abitur],
           exam_scores: stud[:exam_scores].to_i,
-          form_of_study_id: study_f.find_by(title: stud[:form_of_study]).id,
-          group_adm_id: group.find_by(name: stud[:group_adm]).id
+          form_of_study: study_f.find_by(title: stud[:form_of_study]),
+          group_adm: group.find_by(name: stud[:group_adm])
         )
         if record.valid?
           record.save
         else
           upd = student.find_by(id_stud: stud[:id_stud])
-          student.update(
-            upd.id,
+          upd.update(
             first_name: stud[:first_name],
             last_name: stud[:last_name],
             mid_name: stud[:mid_name],
             exam_scores: stud[:exam_scores].to_i,
-            form_of_study_id: study_f.find_by(title: stud[:form_of_study]).id,
-            group_adm_id: group.find_by(name: stud[:group_adm]).id
+            form_of_study: study_f.find_by(title: stud[:form_of_study]),
+            group_adm: group.find_by(name: stud[:group_adm])
           ) unless upd.nil?
         end
       end
@@ -68,7 +67,7 @@ module Parsers
           last_name: rec[:last_name],
           mid_name: rec[:mid_name],
           id_stud: rec[:id_stud],
-          group_id: detect_group(rec[:group]),
+          group: detect_group(rec[:group]),
           subject_data: rec[:subject_data].to_json
         )
         if record.valid?
@@ -78,7 +77,7 @@ module Parsers
           student.update(
             stud.id,
             subject_data: rec[:subject_data].to_json,
-            group_id: detect_group(rec[:group])
+            group: detect_group(rec[:group])
           ) unless stud.nil?
         end
       end
@@ -87,7 +86,7 @@ module Parsers
     def detect_group(name)
       grp = group.find_by(name: name)
       grp = group.new(name: name).save if grp.nil?
-      grp.id
+      grp
     end
   end
 end

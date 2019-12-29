@@ -3,16 +3,19 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
 
   mount Sidekiq::Web => '/sidekiq'
+  devise_for :users
 
   scope "(:region)", region: /#{I18n.available_locales.join('|')}/ do
-    get 'test/output', :as => 'output'
     root 'page#home', :as => 'home'
+    get 'test/output', :as => 'output'
+    get '/documentation' => 'page#doc', :as => 'doc'
   end
 
-  scope module: 'api', path: 'api', defaults: { format: :json } do
+  scope module: 'api', path: 'api' do
     resources :auth, only: [:create]
-    post '/signup' => 'user#create'
+    resources :user, only: [:destroy]
     delete '/signout' => 'auth#signout'
+    post '/signup' => 'user#create'
     get '/find' => 'find#find'
   end
 end

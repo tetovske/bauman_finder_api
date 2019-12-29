@@ -3,11 +3,12 @@
 # Request handler class
 module RequestHandlers
   class RequestHandler < Service
-    include Dry::Monads[:result, :do]
+    include Dry::Monads[:result, :do, :maybe, :try]
 
     def call(params)
+      yield check_params(params)
       options = yield filter_req(params)
-      data = find(options)
+      data = yield find(options)
 
       Success(data)
     end
@@ -15,24 +16,27 @@ module RequestHandlers
     private
 
     def filter_req(params)
-      data = {
-        first_name: params[:name],
-        last_name: params[:last_name],
-        mid_name: params[:mid_name],
-        stud_id: params[:id]
-      }
-      data = data.reject { |k, v| v.nil? }
-      return Success(data) unless data.empty?
+      search_params = JSON.parse(params.to_s.gsub('=>', ':'))
+      return Success(search_params) unless search_params.empty?
 
       Failure(:invalid_request)
     end
 
     def find(params)
-      res = Student.where(params)
-      res.map do |rec|
-        rec.subject_data = JSON.parse(rec.subject_data.to_json) unless rec.subject_data.nil?
-        rec
-      end
+      res = Student.where(params).to_a
+      return Failure(:students_not_found) if res.nil?
+
+      Success(res)
+    end
+
+    def check_params(params)
+      return Failure(:invalid_params) if params.nil?
+      
+      opt = %w[first_name last_name id_stud]
+      res = opt.any? { |par| !params[par].nil? }
+      return Failure(:invalid_params) unless res
+
+      Success()
     end
   end
 end

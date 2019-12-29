@@ -4,24 +4,18 @@ module Api
   # FindController class
   class FindController < ApplicationController
     include RequestHandlers
+    include Dry::AutoInject(Container)[
+      'models.black_list',
+      'services.request_handler'
+    ]
 
     def find
-      if check_token(params[:token])
-        render :json => { response: RequestHandler.call(params).value_or('data not found!') }
+      if black_list.check_token(request.headers['token'])
+        @data = request_handler.call(params['search']).value_or([])
+        render :find, content_type: 'application/json'
       else
-        render :json => { message: 'expired token!' }
+        render :json => { message: 'authentication failed' }
       end
-    end
-
-    private
-
-    def check_token(token)
-      Other::JwtDecoder.call.decode_key(token).bind do |data|
-        exp = data['expires'].to_time
-        return true if (exp - Time.now > 0) && !BlackList.in_black_list?(token)
-        return false
-      end
-      false
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_080348) do
+ActiveRecord::Schema.define(version: 2019_12_24_054726) do
 
   create_table "black_lists", force: :cascade do |t|
     t.string "token"
@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(version: 2019_12_20_080348) do
     t.decimal "exam_scores"
     t.integer "form_of_study_id"
     t.integer "group_adm_id"
-    t.string "subject_data"
     t.integer "group_id"
     t.integer "company_id"
+    t.text "subject_data"
     t.index ["company_id"], name: "index_students_on_company_id"
     t.index ["form_of_study_id"], name: "index_students_on_form_of_study_id"
     t.index ["group_adm_id"], name: "index_students_on_group_adm_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_080348) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "token"
+    t.boolean "is_admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

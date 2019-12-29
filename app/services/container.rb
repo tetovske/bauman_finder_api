@@ -33,12 +33,6 @@ class Container
     end
   end
 
-  namespace 'other' do
-    register 'token_manager' do
-      Other::JwtDecoder
-    end
-  end
-
   namespace 'models' do
     register 'student' do
       Student
@@ -54,6 +48,10 @@ class Container
 
     register 'form_of_study' do
       FormOfStudy
+    end
+
+    register 'black_list' do
+      BlackList
     end
   end
 
@@ -80,6 +78,14 @@ class Container
 
     register 'jwt' do
       JWT
+    end
+
+    register 'request_handler' do
+      RequestHandlers::RequestHandler
+    end
+
+    register 'jwt_manager' do
+      Other::JwtDecoder
     end
   end
 end

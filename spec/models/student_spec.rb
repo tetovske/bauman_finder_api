@@ -10,7 +10,7 @@ RSpec.describe Student, type: :model do
       }
     end 
 
-    it 'should return false because id uniq!' do
+    it 'should return false because stud_id is uniq!' do
       student = Student.new(stud_data)
       student.save if exs = Student.find_by(:id_stud => 'ИУ6').nil?
       another_student = Student.new(stud_data)
