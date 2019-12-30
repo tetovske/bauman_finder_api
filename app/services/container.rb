@@ -60,7 +60,7 @@ class Container
       KeyKeeper
     end
 
-    register 'yaml_parser' do 
+    register 'yaml_parser' do
       YAML
     end
 
@@ -72,7 +72,7 @@ class Container
       Selenium::WebDriver
     end
 
-    register 'scraping_api' do 
+    register 'scraping_api' do
       Mechanize
     end
 

@@ -2,6 +2,7 @@
 
 # Request handler class
 module RequestHandlers
+  # Request handler class
   class RequestHandler < Service
     include Dry::Monads[:result, :do, :maybe, :try]
 
@@ -31,7 +32,7 @@ module RequestHandlers
 
     def check_params(params)
       return Failure(:invalid_params) if params.nil?
-      
+
       opt = %w[first_name last_name id_stud]
       res = opt.any? { |par| !params[par].nil? }
       return Failure(:invalid_params) unless res

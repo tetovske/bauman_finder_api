@@ -11,13 +11,13 @@ module Parsers
         pdf_parser: 'services.pdf_reader',
         yaml: 'services.yaml_parser'
       ]
-      
+
       attr_accessor :keys
 
       def call
         yield init_keys
-        config_path = self.keys['doc_parser_config']
-        decrees_path = self.keys['decrees_docs_path']
+        config_path = keys['doc_parser_config']
+        decrees_path = keys['decrees_docs_path']
         config = yield init_parser("#{Rails.root}#{config_path}")
         stud_resords = yield parse_doc(config, "#{Rails.root}#{decrees_path}")
         Success(stud_resords)

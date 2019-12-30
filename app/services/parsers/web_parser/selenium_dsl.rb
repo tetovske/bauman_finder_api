@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 # Parsers
 module Parsers
@@ -11,7 +12,7 @@ module Parsers
 
       def setup
         self.driver = selenium.for :firefox
-        cnf = self.config = yaml.load_file(PARSER_CONFIG)['links']  
+        cnf = self.config = yaml.load_file(PARSER_CONFIG)['links']
         self.links = cnf.keys.map { |k| { k.to_sym => cnf[k] } }.first
         if driver.nil? && links.nil?
           Failure(:parser_setup_failed)
@@ -21,11 +22,11 @@ module Parsers
       end
 
       def go(path)
-        self.driver.navigate.to(path)
+        driver.navigate.to(path)
       end
 
       def await_presence(event)
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        wait = Selenium::WebDriver::Wait.new(timeout: 10)
         wait.until { presence(event).call }
       end
 
@@ -42,7 +43,7 @@ module Parsers
       end
 
       def teardown_parser
-        self.driver.quit
+        driver.quit
         Success()
       end
     end

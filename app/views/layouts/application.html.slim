@@ -19,9 +19,6 @@ html
             span aria-hidden="true" 
         #navbarBasicExample.navbar-menu
           .navbar-start
-            .navbar-item
-              button.navbar-item.button.is-info.is-light.is-rounded
-                = t 'home_page.about_api'
             .navbar-item.has-dropdown.is-hoverable
               a.navbar-link
                 = t 'home_page.doc'
@@ -47,8 +44,6 @@ html
               = link_to 'RU', region: :ru
             button.navbar-item.button.is-light.is-danger.is-rounded
               = link_to 'EN', region: :en
-    p
-      = current_user.nil?
     = yield
     footer.footer
       .content.has-text-centered

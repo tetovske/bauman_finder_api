@@ -5,14 +5,16 @@ module RequestHandlers
   # Token helper module
   module TokenManager
     def in_black_list?(token)
-      return true unless find_by(:token => token).nil?
+      return true unless find_by(token: token).nil?
+
       false
     end
 
     def check_token(token)
       Other::JwtDecoder.call.decode_key(token).bind do |data|
         exp = data['expires'].to_time
-        return true if (exp - Time.now > 0) && !BlackList.in_black_list?(token)
+        return true if (exp - Time.now).positive? && !BlackList.in_black_list?(token)
+
         return false
       end
       false
