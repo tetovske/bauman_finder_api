@@ -30,9 +30,9 @@ module Parsers
         await_presence id: 'csco_logon_form'
         fill_field({ id: 'username' }, 'dtd18u229')
         fill_field({ id: 'password_input' }, 'rzdpez6x')
-        click_on xpath: '/html/body/div[1]/div/div/div[2]/div/div[2]/table/tbody/tr[2]/td/div/table/tbody/tr/td/div/form/table/tbody/tr[2]/td/div/table/tbody/tr[4]/td/input'
+        click_on xpath: 'able/tbody/tr[2]/td/div/table/tbody/tr[4]/td/input'
         await_presence id: 'history'
-        go "javascript: parent.doURL('75676763663A2F2F72682E6F7A6667682E6568',[{ 'l' : '4829322D03D1606FB09AE9AF59A271D3', 'n' : 1}],'get',false,'no', false)"
+        go "1606FB09AE9AF59A271D3', 'n' : 1}],'get',false,'no', false)"
         await_presence id: 'CSCO_tbdiv'
         click_on xpath: '/html/body/div[1]/div/a[1]'
         await_presence id: 'cas'

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Page controller class
 class PageController < ApplicationController
   def home; end
 

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# User model
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -5,13 +8,13 @@ class User < ApplicationRecord
   validates :token, :email, uniqueness: true
 
   def update_token
-    BlackList.destroy_token(self.token)
-    new_token = BlackList.generate_token(self.email)
-    self.update(token: new_token)
+    BlackList.destroy_token(token)
+    new_token = BlackList.generate_token(email)
+    update(token: new_token)
   end
 
-  def get_username
-    self.email.match(/[^@]+/).to_s
+  def username
+    email.match(/[^@]+/).to_s
   end
 
   class << self

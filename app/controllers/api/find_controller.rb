@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 
-# Api module 
+# Api module
 module Api
   # FindController class
   class FindController < ApplicationController
@@ -14,7 +15,7 @@ module Api
         @data = request_handler.call(params['search']).value_or([])
         render :find, content_type: 'application/json'
       else
-        render :json => { message: 'authentication failed' }
+        render json: { message: 'authentication failed' }
       end
     end
   end
