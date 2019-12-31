@@ -34,3 +34,16 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore itself
+.gitignore
+
+# Ignore other
+Зачетная работа отчет.odt
+Зачетная работа отчет.pdf
+.~За*
+.ruby-version
+.browserslistrc
+dad
+dump.rdb
+wk.code-workspace
