@@ -12,6 +12,6 @@ en:
       users: 'People using this API'
     body:
       main_txt: 'There are all!'
-      after_main_txt: 'And even expelled.'
+      after_main_txt: 'And even expelled'
     footer:
       work_info: 'Zachyotnaya rabota'

@@ -198,6 +198,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     ntlm-http (0.1.1)
     orm_adapter (0.5.0)
+    particles-js-rails (2.0.0)
     pdf-reader (2.4.0)
       Ascii85 (~> 1.0.0)
       afm (~> 0.2.1)
@@ -371,6 +372,7 @@ DEPENDENCIES
   mechanize
   news-api
   nokogiri
+  particles-js-rails
   pdf-reader
   pry-rails
   puma (~> 4.1)

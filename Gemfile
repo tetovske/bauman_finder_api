@@ -77,6 +77,8 @@ gem 'rails-i18n', '~> 6.0.0'
 # CSS lib
 gem 'bulma-rails', '~> 0.8.0'
 
+gem 'particles-js-rails'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 

@@ -12,6 +12,6 @@ ru:
       users: 'людей использующих данное API'
     body:
       main_txt: 'Найдутся все!'
-      after_main_txt: 'И даже отчисленные.'
+      after_main_txt: 'И даже отчисленные'
     footer:
       work_info: 'Зачетная работа'
