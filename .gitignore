@@ -11,5 +11,5 @@
 /db/*.sqlite3-journal
 /db/*.sqlite3-*
 
-/log
-/node_modules
+/log/*
+/node_modules/*
