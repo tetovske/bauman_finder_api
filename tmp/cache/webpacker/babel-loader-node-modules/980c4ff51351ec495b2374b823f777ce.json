@@ -1,0 +1,1 @@
+{"ast":null,"code":"console.log('Hello World from animation script!:)');","map":{"version":3,"sources":["/home/tetovske/YAIP/bauman_finder_api/app/javascript/packs/animation.js"],"names":["console","log"],"mappings":"AAAAA,OAAO,CAACC,GAAR,CAAY,sCAAZ","sourcesContent":["console.log('Hello World from animation script!:)')"]},"metadata":{},"sourceType":"module"}

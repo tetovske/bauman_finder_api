@@ -1,0 +1,1 @@
+{"ast":null,"code":"console.log('hi');","map":{"version":3,"sources":["/home/tetovske/YAIP/bauman_finder_api/app/javascript/packs/animation.js"],"names":["console","log"],"mappings":"AAAAA,OAAO,CAACC,GAAR,CAAY,IAAZ","sourcesContent":["console.log('hi')"]},"metadata":{},"sourceType":"module"}

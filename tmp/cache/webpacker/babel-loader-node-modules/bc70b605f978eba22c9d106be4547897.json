@@ -1,0 +1,1 @@
+{"ast":null,"code":"$('.main-page-subtitle').append('s');","map":{"version":3,"sources":["/home/tetovske/YAIP/bauman_finder_api/app/javascript/packs/animation.js"],"names":["$","append"],"mappings":"AAAAA,CAAC,CAAC,qBAAD,CAAD,CAAyBC,MAAzB,CAAgC,GAAhC","sourcesContent":["$('.main-page-subtitle').append('s')"]},"metadata":{},"sourceType":"module"}
