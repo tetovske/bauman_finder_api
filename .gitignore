@@ -5,7 +5,6 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -18,31 +17,4 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore uploaded files in development.
-/storage/*
-!/storage/.keep
-.byebug_history
-
-# Ignore master key for decrypting credentials and more.
-/config/master.key
-
-# Ignore code workspace file
-/bf.code-workspace
-/public/packs
-/public/packs-test
 /node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-
-# Ignore itself
-.gitignore
-
-# Ignore other
-'Зачетная работа отчет.odt'
-'Зачетная работа отчет.pdf'
-.ruby-version
-.browserslistrc
-dad
-dump.rdb
-wk.code-workspace
