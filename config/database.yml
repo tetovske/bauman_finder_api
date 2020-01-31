@@ -21,3 +21,12 @@ development:
   pool: 5
   username: bf_user
   password: 4525
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: bf_db
+  host: localhost
+  pool: 5
+  username: bf_user
+  password: 4525
