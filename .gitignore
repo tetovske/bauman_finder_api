@@ -18,3 +18,5 @@
 !/tmp/.keep
 
 /node_modules
+
+/config/master.key
