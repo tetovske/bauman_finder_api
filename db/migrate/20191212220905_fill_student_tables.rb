@@ -12,7 +12,7 @@ class FillStudentTables < ActiveRecord::Migration[6.0]
       t.column :id_stud, :string
       t.column :id_abitur, :string
       t.column :exam_scores, :decimal
-      #t.remove :identifier
+      t.remove :identifier
     end
   end
 end
