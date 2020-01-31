@@ -87,7 +87,10 @@ module Parsers
 
     def detect_group(name)
       grp = group.find_by(name: name)
-      grp = group.new(name: name).save if grp.nil?
+      if grp.nil?
+        grp = group.new(name: name)
+        grp.save
+      end
       grp
     end
   end
