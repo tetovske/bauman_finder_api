@@ -1,0 +1,24 @@
+decree_parser:
+  doc_parser_config: '/config/doc_parser_config.yaml'
+  decrees_docs_path: '/storage/data/decrees'
+web:
+  groups:
+    'ИУ6-31Б': 'group/8e243850-3d75-11e8-9f9b-005056960017/'
+    'ИУ6-32Б': 'group/8e282802-3d75-11e8-8869-005056960017/'
+    'ИУ6-33Б': 'group/8e2955e2-3d75-11e8-9b85-005056960017/'
+    'ИУ6-34Б': 'group/8e2c2f2e-3d75-11e8-a507-005056960017/'
+    'ИУ6-35Б': 'group/8e2d07c8-3d75-11e8-94be-005056960017/'
+  login1_u: 'https://webvpn.bmstu.ru/+CSCOE+/logon.html'
+  login1_1_u: 'https://webvpn.bmstu.ru/+CSCO+1075676763663A2F2F636265676E79332E72682E6F7A6667682E6568++/portal3/login1?back=https://eu.bmstu.ru/'
+  login2_x: '/html/body/div[1]/div/a[1]'
+  form1:
+    usr: 'username'
+    pass: 'password_input'
+  form2:
+    usr: 'username'
+    pass: 'password'
+  home_u: 'https://webvpn.bmstu.ru/+CSCO+1h75676763663A2F2F72682E6F7A6667682E6568++/modules/progress3/'
+  subj_x: '/html/body/div[1]/div[7]/div/div[3]/div/div[2]/div/table/thead/tr/th'
+  stud_c: 'table.standart_table:nth-child(1) > tbody:nth-child(3) > tr'
+  name: 'td[2]/a/nobr/span[3]'
+  stud_id: 'td[3]'

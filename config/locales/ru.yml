@@ -1,0 +1,17 @@
+ru:
+  home_page:
+    doc: 'Документация'
+    about_api: 'Об API'
+    login: 'Войти'
+    logout: 'Выйти'
+    signin: 'Зарегистрироваться'
+    after_header:
+      students_in: 'Студентов в базе данных'
+      updates: 'Данные обновляются каждые'
+      updates_txt: '15 мин'
+      users: 'людей использующих данное API'
+    body:
+      main_txt: 'Найдутся все!'
+      after_main_txt: 'И даже отчисленные'
+    footer:
+      work_info: 'Зачетная работа'

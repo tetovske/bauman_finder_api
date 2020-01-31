@@ -1,24 +1,110 @@
-# README
+# BaumanFinder API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Небольшое API позволяющее получить информацию об успеваемости студентов (пока что только ИУ6-3*), а также их данные при поступлении в МГТУ. Все работает с помощью JWT (немного криво, но все же работает).
 
-Things you may want to cover:
+## Регистрация
 
-* Ruby version
+Запрос на регистрацию
 
-* System dependencies
+```json
+{ 
+	"signup":
+	{
+		"email": "yay@email.com",
+		"password": "password",
+		"password_confirmation": "password"
+	}
+}
+```
 
-* Configuration
+Ответ если все норм
 
-* Database creation
+```json
+{
+  "message": "user successfully registered!",
+  "data": {
+    "username": "yay",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2VtYWlsIjoieWF5QGVtYWlsLmNvbSIsImV4cGlyZXMiOiIyMDE5LTEyLTMxIDA0OjUzOjU5ICswMzAwIn0.hx8zb8WF2x0v0Kdy3n2bPSZOgtqKxNbMHpjwxxWG1WY"
+  }
+}
+```
 
-* Database initialization
+Используйте полученный токен в последующих запросах!
 
-* How to run the test suite
+## Авторизация
 
-* Services (job queues, cache servers, search engines, etc.)
+```json
+{ 
+	"auth":
+	{
+		"email": "yay@email.com",
+		"password": "password"
+	}
+}
+```
 
-* Deployment instructions
+## Поиск людей
 
-* ...
+Запрос на поиск по имени
+
+```json
+{ 
+	"search":
+	{
+		"first_name": "Тит"
+	}
+}
+```
+
+Пример ответа
+
+```json
+{
+  "students": [
+    {
+      "first_name": "Тит",
+      "second_name": "Дасов",
+      "mid_name": "Дмитриевич",
+      "student_id": "18У229",
+      "group_upon_admission": "ИУ6-33Б",
+      "group": "ИУ6-33Б",
+      "exam_scores": null,
+      "group_rating": "10",
+      "flow_rating": "32",
+      "module_points_sum": "396",
+      "subject_data": {
+        "Элективный курс по физической культуре и спорту М": "54",
+        "Языки интернет-программирования М": "45",
+        "Теория вероятностей и математическая статистика  М": "49",
+        "Базы данных М": "38",
+        "Иностранный язык М": "90",
+        "Правоведение М": "76",
+        "Электротехника  М": "16",
+        "Физика М": "28",
+        "Теория вероятностей и математическая статистика  КМ": "83",
+        "Электротехника  КМ": "50",
+        "Базы данных КМ": "100",
+        "Языки интернет-программирования КМ": "50",
+        "Иностранный язык КМ": "100",
+        "Правоведение КМ": "100",
+        "Физика КМ": "50",
+        "Правоведение СЗ": "13",
+        "Языки интернет-программирования СЗ": "0",
+        "Элективный курс по физической культуре и спорту СЗ": "0",
+        "Физика СЗ": "6",
+        "Иностранный язык СЗ": "12",
+        "Электротехника  СЗ": "0",
+        "Базы данных СЗ": "0",
+        "Теория вероятностей и математическая статистика  СЗ": "14",
+        "Электротехника  ЛР": "4",
+        "Базы данных ЛР": "4",
+        "Языки интернет-программирования ЛР": "9",
+        "Физика ЛР": "4",
+        "Рейтинг по группе ": "10",
+        "Рейтинг по кафедре и специальности ": "32",
+        "Сумма модулей ": "396"
+      }
+    }
+  ]
+}
+```

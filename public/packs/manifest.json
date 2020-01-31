@@ -1,0 +1,24 @@
+{
+  "animation.js": "/packs/js/animation-5fbf5a4c00ce325bbc15.js",
+  "animation.js.map": "/packs/js/animation-5fbf5a4c00ce325bbc15.js.map",
+  "application.js": "/packs/js/application-a94e70c91f0e9e184199.js",
+  "application.js.map": "/packs/js/application-a94e70c91f0e9e184199.js.map",
+  "entrypoints": {
+    "animation": {
+      "js": [
+        "/packs/js/animation-5fbf5a4c00ce325bbc15.js"
+      ],
+      "js.map": [
+        "/packs/js/animation-5fbf5a4c00ce325bbc15.js.map"
+      ]
+    },
+    "application": {
+      "js": [
+        "/packs/js/application-a94e70c91f0e9e184199.js"
+      ],
+      "js.map": [
+        "/packs/js/application-a94e70c91f0e9e184199.js.map"
+      ]
+    }
+  }
+}
