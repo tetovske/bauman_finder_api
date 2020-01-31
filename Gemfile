@@ -52,6 +52,8 @@ gem 'jwt'
 
 gem 'rspec-rails'
 
+gem 'pg'
+
 # Dry style 
 gem 'dry-monads'
 gem 'dry-transaction'
