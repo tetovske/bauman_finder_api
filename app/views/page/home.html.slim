@@ -1,0 +1,19 @@
+nav.level.after-header
+  .level-item.has-text-centered
+    div
+      p.heading= t 'home_page.after_header.students_in'
+      p.title= users_in_db
+  .level-item.has-text-centered
+    div
+      p.heading= t 'home_page.after_header.updates'
+      p.title= t 'home_page.after_header.updates_txt'
+  .level-item.has-text-centered
+    div
+      p.heading= t 'home_page.after_header.users'
+      p.title &gt; 0
+#wrapper
+  .animated-background
+    section.section
+      .container.has-text-centered.main-page-content
+        p.main-page-title= t 'home_page.body.main_txt'
+        p.main-page-subtitle= t 'home_page.body.after_main_txt'
