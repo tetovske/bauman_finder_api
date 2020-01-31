@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_12_24_054726) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "black_lists", force: :cascade do |t|
     t.string "token"
     t.datetime "created_at", precision: 6, null: false
