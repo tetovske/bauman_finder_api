@@ -9,6 +9,8 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet" /
   body
+    .notice
+      = notice
     nav.navbar.header.is-spaced aria-label=("main navigation") role="navigation" 
       .container
         .navbar-brand
@@ -22,7 +24,7 @@ html
           .navbar-start
             .navbar-item.has-dropdown.is-hoverable
               a.navbar-link
-                = t 'home_page.doc'
+                = t "home_page.doc"
               .navbar-dropdown
                 a.navbar-item
                   = t :doc
@@ -37,14 +39,20 @@ html
                   | Поиск по группам
                 a.navbar-item
                   | Сортировки
-          .navbar-end
-            .navbar-item
-              .buttons
+            - if user_signed_in?
+              a.navbar-item
+                = link_to t("home_page.account"), home_path
           .navbar-item
-            button.navbar-item.button.is-light.is-link.is-rounded
-              = link_to 'RU', region: :ru
-            button.navbar-item.button.is-light.is-danger.is-rounded
-              = link_to 'EN', region: :en
+            .buttons
+              = button_to "Поруски", "/ru", :method => :get, class: "navbar-item button is-light is-info is-rounded"
+              = button_to "Pindossky", "/en", :method => :get, class: "navbar-item button is-light is-danger is-rounded"
+          .navbar-item
+            .buttons
+              - unless user_signed_in?
+                = button_to t("home_page.login"), new_user_session_path, method: :get, class: "button is-primary is-light"
+                = button_to t("home_page.signup"), new_user_registration_path, method: :get, class: "button is-link is-light"
+              - else
+                = button_to t("home_page.logout"), destroy_user_session_path, method: :delete, class: "button is-link is-light"
     = yield
     footer.footer
       .content.has-text-centered

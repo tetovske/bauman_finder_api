@@ -4,7 +4,8 @@ en:
     about_api: 'About API'
     login: 'Login'
     logout: 'Logout'
-    signin: 'Signin'
+    signup: 'Start using API'
+    account: 'Account'
     after_header:
       students_in: 'Students in the database'
       updates: 'Data is updated every'
@@ -14,4 +15,4 @@ en:
       main_txt: 'There are all!'
       after_main_txt: 'And even expelled'
     footer:
-      work_info: 'Zachyotnaya rabota'
+      work_info: 'Zachyotnaya rabota by tetovske'

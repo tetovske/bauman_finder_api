@@ -4,7 +4,8 @@ ru:
     about_api: 'Об API'
     login: 'Войти'
     logout: 'Выйти'
-    signin: 'Зарегистрироваться'
+    signup: 'Начать использовать API'
+    account: 'Аккаунт'
     after_header:
       students_in: 'Студентов в базе данных'
       updates: 'Данные обновляются каждые'
