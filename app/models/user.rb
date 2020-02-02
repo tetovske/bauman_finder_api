@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :token, :email, uniqueness: true
+  validates :email, uniqueness: true
 
   def update_token
     BlackList.destroy_token(token)
