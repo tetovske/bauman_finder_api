@@ -9,12 +9,11 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet" /
   body
-    .notice
-      = notice
-    nav.navbar.header.is-spaced aria-label=("main navigation") role="navigation" 
+    = render 'layouts/devise_alert'
+    nav.navbar.header.is-spaced aria-label=("main navigation") role="navigation"
       .container
         .navbar-brand
-          a.navbar-item.logo href="/" 
+          a.navbar-item.logo href="/#{I18n.locale}"
             p BaumanFinder
           a.navbar-burger.burger aria-expanded="false" aria-label="menu" data-target="navbarBasicExample" role="button" 
             span aria-hidden="true" 
@@ -29,9 +28,9 @@ html
                 a.navbar-item
                   = t :doc
                 a.navbar-item
-                  | JWT запросы
-                a.navbar-item
                   | Запросы с использованием токена
+                a.navbar-item
+                  | JWT запросы (Beta)
                 hr.navbar-divider/
                 a.navbar-item
                   | Простейшие запросы
@@ -41,18 +40,21 @@ html
                   | Сортировки
             - if user_signed_in?
               a.navbar-item
-                = link_to t("home_page.account"), home_path
+                = link_to t("home_page.account"), account_path
           .navbar-item
             .buttons
               = button_to "Поруски", "/ru", :method => :get, class: "navbar-item button is-light is-info is-rounded"
               = button_to "Pindossky", "/en", :method => :get, class: "navbar-item button is-light is-danger is-rounded"
-          .navbar-item
-            .buttons
-              - unless user_signed_in?
-                = button_to t("home_page.login"), new_user_session_path, method: :get, class: "button is-primary is-light"
-                = button_to t("home_page.signup"), new_user_registration_path, method: :get, class: "button is-link is-light"
-              - else
-                = button_to t("home_page.logout"), destroy_user_session_path, method: :delete, class: "button is-link is-light"
+          .navbar-end
+            - if user_signed_in?
+              = link_to account_username, account_path, class: "navbar-item"
+            .navbar-item
+              .buttons
+                - unless user_signed_in?
+                  = button_to t("home_page.login"), new_user_session_path, method: :get, class: "button is-primary is-light"
+                  = button_to t("home_page.signup"), new_user_registration_path, method: :get, class: "button is-link is-light"
+                - else
+                  = button_to t("home_page.logout"), destroy_user_session_path, method: :delete, class: "button is-link is-light"
     = yield
     footer.footer
       .content.has-text-centered
