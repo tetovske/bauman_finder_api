@@ -1,0 +1,12 @@
+<% unless notice.nil? %>
+  <div class="notice notifications">
+    <%= notice %>
+    <button class="delete"></button>
+  </div>
+<% end %>
+<% unless alert.nil? %>
+  <div class="alert notifications">
+    <%= alert %>
+    <button class="delete"></button>
+  </div>
+<% end %>

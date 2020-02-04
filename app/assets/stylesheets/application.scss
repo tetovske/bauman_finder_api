@@ -57,4 +57,18 @@ body {
     padding-bottom: 15px;
 }
 
-.animated-background {}
+.alert-abstract {
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+}
+
+.notice {
+    @extend .alert-abstract;
+    background-color: #2ECC40;
+}
+
+.alert {
+    @extend .alert-abstract;
+    background-color: #FF4136;
+}
