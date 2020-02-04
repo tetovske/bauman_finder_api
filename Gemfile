@@ -65,6 +65,9 @@ gem 'slim-rails'
 gem 'haml'
 
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-vkontakte'
+gem 'omniauth-google-oauth2', '~> 0.2.2'
 
 gem 'news-api'
 
@@ -80,6 +83,8 @@ gem 'rails-i18n', '~> 6.0.0'
 gem 'bulma-rails', '~> 0.8.0'
 
 gem 'particles-js-rails'
+
+gem 'rails-ujs'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'

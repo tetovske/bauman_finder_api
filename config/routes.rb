@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
 
   mount Sidekiq::Web => '/sidekiq'
+  devise_for :users
 
   scope "(:region)", region: /#{I18n.available_locales.join('|')}/ do
-    devise_for :users
     root 'page#home', :as => 'home'
     get 'test/output', :as => 'output'
     get '/documentation' => 'page#doc', :as => 'doc'
+    get '/account' => 'page#account', :as => 'account'
+    get '/regenerate' => 'page#regenerate_token', :as => 'regenerate_token'
   end
 
   scope module: 'api', path: 'api' do
