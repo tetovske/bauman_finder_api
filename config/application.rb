@@ -39,5 +39,6 @@ module BaumanFinderApi
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Flash
     config.i18n.available_locales = [:ru, :en]
+    config.assets.initialize_on_precompile = false
   end
 end
