@@ -48,10 +48,7 @@
     }
 </style>
 <div class="card">
-    <!--<%= image_tag attachments['money.png'].url, width:"190", height:"155" %>-->
-    <p class="text">Привет <%= @email %>!</p>
+    <p class="text">Привет <%= @email.to_s.match(/[^@]+/).to_s %>!</p>
     <p class="text">Для того чтобы подтвердить вашу почту нажмите на кнопку ниже</p>
-    <button class="button">Подтвердить аккаунт</button>
-    <%= button_to 'Подтвердить аккаунт', confirmation_url(@resource, confirmation_token: @token), class: "button" %>
-    <%= link_to 'Подтвердить аккаунт', confirmation_url(@resource, confirmation_token: @token)%>
+    <%= link_to 'Подтвердить аккаунт', confirmation_url(@resource, confirmation_token: @token), class: "button" %>
 </div>
