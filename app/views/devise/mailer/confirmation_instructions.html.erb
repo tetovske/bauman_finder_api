@@ -1,5 +1,57 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: 'IBM Plex Mono', monospace;
+    }
+    
+    .email-confirmation-image {
+        display: block;
+        overflow: hidden;
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+    
+    .text {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .card {
+        display: block;
+        width: 350px;
+        border-radius: 20px;
+        background-color: rgb(245, 245, 245);
+        margin: auto;
+        padding: 30px;
+    }
+    
+    .button {
+        display: block;
+        border: none;
+        padding: 10px;
+        background-color: #276CDA;
+        border-radius: 5px;
+        margin: 30px auto;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: .2s;
+    }
+    
+    .button:hover {
+        transition: .2s;
+        background-color: rgb(30, 86, 175);
+    }
+</style>
+<div class="card">
+    <!--<%= image_tag attachments['money.png'].url, width:"190", height:"155" %>-->
+    <p class="text">Привет <%= @email %>!</p>
+    <p class="text">Для того чтобы подтвердить вашу почту нажмите на кнопку ниже</p>
+    <button class="button">Подтвердить аккаунт</button>
+    <%= button_to 'Подтвердить аккаунт', confirmation_url(@resource, confirmation_token: @token), class: "button" %>
+    <%= link_to 'Подтвердить аккаунт', confirmation_url(@resource, confirmation_token: @token)%>
+</div>

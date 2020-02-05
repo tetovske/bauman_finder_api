@@ -12,6 +12,17 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.yandex.ru",
+    :port => 587,
+    :domain => 'yandex.ru',
+    :authentication => :plain,
+    :user_name => 'service@baumanfinder.ru',
+    :password => 'Velo3001'
+  }
+
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Enable/disable caching. By default caching is disabled.
