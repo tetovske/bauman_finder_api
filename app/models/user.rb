@@ -3,8 +3,8 @@
 # User model
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
-         #:omniauthable, :omniauth_providers => [:google_oauth2]
+         :recoverable, :rememberable, :validatable, :confirmable,
+         :omniauthable, :omniauth_providers => [:facebook]
 
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :bf_api_token, uniqueness: true

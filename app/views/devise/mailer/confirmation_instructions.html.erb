@@ -48,7 +48,7 @@
     }
 </style>
 <div class="card">
-    <p class="text">Привет <%= @email.to_s.match(/[^@]+/).to_s %>!</p>
+    <p class="text">Привет, <%= @email.to_s.match(/[^@]+/).to_s %>!</p>
     <p class="text">Для того чтобы подтвердить вашу почту нажмите на кнопку ниже</p>
     <%= link_to 'Подтвердить аккаунт', confirmation_url(@resource, confirmation_token: @token), class: "button" %>
 </div>
