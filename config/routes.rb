@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
 
   mount Sidekiq::Web => '/sidekiq'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   scope "(:region)", region: /#{I18n.available_locales.join('|')}/ do
     root 'page#home', :as => 'home'

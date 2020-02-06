@@ -40,6 +40,7 @@ module Parsers
           lg1.forms.first,
           get_form_data('form1')
         )
+
         Success()
       end
 

@@ -300,4 +300,5 @@ Devise.setup do |config|
 
   #config.assets.initialize_on_precompile = false
   config.reconfirmable = false
+  config.omniauth :facebook, "2787713297989507", "APP_SECRET"
 end
