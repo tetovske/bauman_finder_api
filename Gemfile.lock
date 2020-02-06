@@ -213,6 +213,8 @@ GEM
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
       rack (>= 1.6.2, < 3)
+    omniauth-facebook (6.0.0)
+      omniauth-oauth2 (~> 1.2)
     omniauth-google-oauth2 (0.2.6)
       omniauth (> 1.0)
       omniauth-oauth2 (~> 1.1)
@@ -400,6 +402,7 @@ DEPENDENCIES
   news-api
   nokogiri
   omniauth
+  omniauth-facebook
   omniauth-google-oauth2 (~> 0.2.2)
   omniauth-vkontakte
   particles-js-rails
