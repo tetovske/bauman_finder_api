@@ -47,7 +47,10 @@ html
               = button_to "Pindossky", "/en", :method => :get, class: "navbar-item button is-light is-danger is-rounded"
           .navbar-end
             - if user_signed_in?
-              = link_to account_username, account_path, class: "navbar-item"
+              = link_to current_user.bf_username, account_path, class: "navbar-item"
+            - unless current_user&.image_url.nil?
+              a.image.is-48x48
+                = image_tag current_user.image_url, class: "is-rounded"
             .navbar-item
               .buttons
                 - unless user_signed_in?

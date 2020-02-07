@@ -72,3 +72,9 @@ body {
     @extend .alert-abstract;
     background-color: #FF4136;
 }
+
+.avatar {
+    border: 5px solid black;
+    border-radius: 50%;
+    width: 2px;
+}
