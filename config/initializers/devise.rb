@@ -300,5 +300,7 @@ Devise.setup do |config|
 
   #config.assets.initialize_on_precompile = false
   config.reconfirmable = false
-  config.omniauth :facebook, "2787713297989507", "APP_SECRET"
+  config.omniauth :facebook, Rails.application.credentials.facebook_app_id, Rails.application.credentials.facebook_app_secret, scope: 'email', token_params: { parse: :json }, :provider_ignores_state => true
+  config.omniauth :vkontakte, Rails.application.credentials.vk_app_id, Rails.application.credentials.vk_app_secret, 
+                  scope: 'email', display: 'popup', token_params: { parse: :json }, :provider_ignores_state => true
 end
