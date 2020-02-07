@@ -87,5 +87,9 @@ class Container
     register 'jwt_manager' do
       Other::JwtDecoder
     end
+
+    register 'token_generator' do
+      Other::TokenGenerator
+    end
   end
 end

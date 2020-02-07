@@ -68,7 +68,6 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
-gem 'omniauth-google-oauth2', '~> 0.2.2'
 
 gem 'news-api'
 
