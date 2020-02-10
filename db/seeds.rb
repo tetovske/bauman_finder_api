@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.new.tap do |admin|
+  admin.email = Rails.application.credentials.default_admin_email!
+  admin.password = Rails.application.credentials.default_admin_pass!
+  admin.bf_api_token = Other::TokenGenerator.call(6).value_or("123456")
+  admin.is_admin = true
+  admin.skip_confirmation!
+  admin.save!
+end

@@ -16,7 +16,7 @@ body {
 }
 
 .form_element {
-    background-color: blue;
+    background-color: rgb(221, 221, 221);
 }
 
 .form-line {
@@ -65,7 +65,7 @@ body {
 
 .notice {
     @extend .alert-abstract;
-    background-color: #2ECC40;
+    background-color: rgb(20, 204, 100);
 }
 
 .alert {
@@ -82,10 +82,30 @@ body {
 .reg-form {
     padding: 30px;
     width: 300px;
-    background-color: blue;
+    background-color: rgb(221, 221, 221);
+    border-radius: 30px;
+}
+
+input[type="submit"].sign-in-with {
+    border-radius: 15px;
+    background-color: cadetblue;
+    border: 0;
+    padding: 0;
 }
 
 .sign-in-with {
     border-radius: 15px;
     background-color: cadetblue;
+    border: 0;
+    padding: 0;
+}
+
+.control {
+    margin-top: 10px;
+}
+
+.login-form {
+    padding: 50px;
+    border-radius: 15px;
+    border: 1px solid rgb(235, 235, 235);
 }

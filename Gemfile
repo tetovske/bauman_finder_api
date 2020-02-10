@@ -68,6 +68,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 
 gem 'news-api'
 

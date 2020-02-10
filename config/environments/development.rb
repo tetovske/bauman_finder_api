@@ -19,8 +19,8 @@ Rails.application.configure do
     :port => 587,
     :domain => 'yandex.ru',
     :authentication => :plain,
-    :user_name => 'service@baumanfinder.ru',
-    :password => 'Velo3001'
+    :user_name => Rails.application.credentials.mailer_email,
+    :password => Rails.application.credentials.mailer_password
   }
 
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }

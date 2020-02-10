@@ -20,8 +20,8 @@ Rails.application.configure do
     :port => 587,
     :domain => 'yandex.ru',
     :authentication => :plain,
-    :user_name => 'service@baumanfinder.ru',
-    :password => 'Velo3001'
+    :user_name => Rails.application.credentials.mailer_email,
+    :password => Rails.application.credentials.mailer_password
   }
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]

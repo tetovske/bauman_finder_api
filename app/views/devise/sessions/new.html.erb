@@ -1,102 +1,99 @@
-<h2>Log in</h2>
-
 <section class="section">
   <div class="container">
     <div class="columns">
-      <div class="column is-three-fifths">
-        First column
-      </div>
-
       <div class="column">
-        <div class="reg-form">
-          <%= form_for(resource, :html => { class: "reg-form" }, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="field">
-              <%= f.label :email, class: "label" %>
-              <div class="control">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "Почта" %>
-              </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-danger">
+            <% student = random_student(:with_subj_data) %>
+            <p class="title">
+              <%= student.last_name %> <%= student.first_name %> <%= student.mid_name %>
+            </p>
+            <p class="subtitle">Обучается в группе: <%= student.group.name %></p>
+            <div class="content">
+              <% JSON.parse(student.subject_data).each do |key, value| %>
+                <div><%= key %>: <%= value %></div>
+              <% end %>
             </div>
-
-            <div class="field">
-              <%= f.label :password, class: "label" %>
-              <div class="control">
-                <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
-              </div>
+          </article>
+        </div>
+      </div>
+      <div class="column login-form">  
+        <h1 class="title"><%= t "home_page.login_form.form_title" %></h1>  
+        <div class="columns">
+          <div class="column">
+            <div class="control">
+              <%= link_to omniauth_authorize_path(:user, :vkontakte), class: "is-info is-light button is-fullwidth" do %>
+                <span class="icon">
+                  <%= image_tag("logos/VK_Blue_Logo") %>
+                </span>
+                <span>
+                  <%= t "home_page.login_form.login_thru" %> VK
+                </span>
+              <% end %>
             </div>
-
-            <% if devise_mapping.rememberable? %>
+            <div class="control">
+              <%= link_to omniauth_authorize_path(:user, :facebook), class: "is-link is-light button is-fullwidth" do %>
+                <span class="icon">
+                  <%= image_tag("logos/facebook_logo") %>
+                </span>
+                <span>
+                  <%= t "home_page.login_form.login_thru" %> Facebook
+                </span>
+              <% end %>
+            </div>
+            <div class="control">
+              <%= link_to omniauth_authorize_path(:user, :github), class: "is-light button is-fullwidth" do %>
+                <span class="icon">
+                  <%= image_tag("logos/GitHub") %>
+                  <%# <i class="fab fa-github"></i> %>
+                </span>
+                <span>
+                  <%= t "home_page.login_form.login_thru" %> GitHub
+                </span>
+              <% end %>
+            </div>
+          </div>
+          <div class="column">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="field">
-                <%= f.check_box :remember_me, class: "checkbox" %>
-                <%= f.label :remember_me, class: "checkbox" %>
-              </div>
-            <% end %>
-
-            <div class="actions">
-              <div class="field is-grouped">
+                <%= f.label :email, t("home_page.login_form.email"), class: "label" %>
                 <div class="control">
-                  <%= f.submit "Log in", class: "button is-link" %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: t("home_page.login_form.email") %>
                 </div>
-                <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-                  <%= link_to "Sign up", new_registration_path(resource_name), class: "button is-light" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password, t("home_page.login_form.pass"), class: "label" %>
+                <div class="control">
+                  <%= f.password_field :password, autocomplete: "current-password", class: "input", placeholder: t("home_page.login_form.pass")%>
+                </div>
+              </div>
+
+              <% if devise_mapping.rememberable? %>
+                <div class="field">
+                  <%= f.check_box :remember_me, class: "checkbox" %>
+                  <%= f.label :login, t("home_page.login_form.remember"), class: "checkbox" %>
+                </div>
+              <% end %>
+
+              <div class="actions">
+                <div class="control">
+                  <%= f.submit t("home_page.login_form.login"), class: "button is-success is-fullwidth" %>
+                </div>
+                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                  <div class="control">
+                    <%= link_to t("home_page.login_form.forgot_pass"), new_password_path(resource_name), class: "button is-warning is-light is-fullwidth" %>
+                  </div>
                 <% end %>
               </div>
-            </div>
-            <%- if devise_mapping.omniauthable? %>
-              <%- resource_class.omniauth_providers.each do |provider| %>
-                <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "sign-in-with" %><br />
-                <p class="control">
-                  <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
-                    <span class="icon">
-                      <%= image_tag asset_path("pictures/VK_Blue_Logo.svg") %>
-                    </span>
-                    <span>
-                      Tweet
-                    </span>
-                  </a>
-                </p>
-              <% end %>
+              
             <% end %>
-          <% end %>
-
-          <%= render "devise/shared/links" %>
+          </div>
         </div>
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to t("home_page.login_form.signup_mess"), new_registration_path(resource_name), class: "button is-light is-fullwidth" %>
+        <% end %>
       </div>
     </div>
   </div>
 </section>
-
-
-<div class="field">
-  <label class="label">Name</label>
-  <div class="control">
-    <input class="input" type="text" placeholder="Text input">
-  </div>
-</div>
-
-<div class="field">
-  <label class="label">Username</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-    <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-check"></i>
-    </span>
-  </div>
-  <p class="help is-success">This username is available</p>
-</div>
-
-<div class="field">
-  <label class="label">Email</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
-  </div>
-  <p class="help is-danger">This email is invalid</p>
-</div>
