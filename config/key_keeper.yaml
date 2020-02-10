@@ -17,11 +17,12 @@ web:
   form2:
     usr: 'username'
     pass: 'password'
-  home_u: 'https://webvpn.bmstu.ru/+CSCO+1h75676763663A2F2F72682E6F7A6667682E6568++/modules/progress3/'
+  home_u: 'https://webvpn.bmstu.ru/+CSCO+1h75676763663A2F2F72682E6F7A6667682E6568++/modules/progress3/2019-01/'
   subj_x: '/html/body/div[1]/div[7]/div/div[3]/div/div[2]/div/table/thead/tr/th'
   stud_c: 'table.standart_table:nth-child(1) > tbody:nth-child(3) > tr'
   name: 'td[2]/a/nobr/span[3]'
   stud_id: 'td[3]'
+search_method_key_name: 'search_meth'
 search_methods:
   - 'find'
   - 'find_first'
@@ -36,4 +37,3 @@ search_methods_args:
   - 'faculty'
   - 'department'
   - 'exam_scores'
-  - 'course'

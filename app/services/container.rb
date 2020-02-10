@@ -84,6 +84,10 @@ class Container
       RequestHandlers::RequestHandler
     end
 
+    register 'request_handler_v1' do
+      RequestHandlers::RequestHandlerV1
+    end
+
     register 'jwt_manager' do
       Other::JwtDecoder
     end

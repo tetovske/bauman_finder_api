@@ -1,1 +1,1 @@
-json.message "serv responce: #{@res}"
+json.message "serv responce: #{@response}"
