@@ -22,3 +22,18 @@ web:
   stud_c: 'table.standart_table:nth-child(1) > tbody:nth-child(3) > tr'
   name: 'td[2]/a/nobr/span[3]'
   stud_id: 'td[3]'
+search_methods:
+  - 'find'
+  - 'find_first'
+  - 'find_except'
+  - 'find_except_first'
+search_methods_args:
+  - 'name'
+  - 'last_name'
+  - 'mid_name'
+  - 'group'
+  - 'year_of_admission'
+  - 'faculty'
+  - 'department'
+  - 'exam_scores'
+  - 'course'

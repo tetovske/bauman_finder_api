@@ -39,7 +39,7 @@ module RequestHandlers
 
     def find_by_token(token)
       Other::JwtDecoder.call.decode_key(token).bind do |val|
-        return User.where(email: val['user_email']).first
+        return User.find_by(email: val['user_email'])
       end
     end
   end

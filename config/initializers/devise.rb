@@ -300,7 +300,10 @@ Devise.setup do |config|
 
   #config.assets.initialize_on_precompile = false
   config.reconfirmable = false
-  config.omniauth :facebook, "2787713297989507", "5f99b8393ded827ce6bb4cb850007853", scope: 'email', token_params: { parse: :json }, :provider_ignores_state => true
-  config.omniauth :vkontakte, "6455525", "UYrN89NNZfdjjGaHJ357", 
+
+  oauth_secrets = Rails.application.credentials.oauth
+  config.omniauth :facebook, oauth_secrets[:facebook_app_id], oauth_secrets[:facebook_app_secret], scope: 'email', token_params: { parse: :json }, :provider_ignores_state => true
+  config.omniauth :vkontakte, oauth_secrets[:vk_app_id], oauth_secrets[:vk_app_secret], 
                   scope: 'email', display: 'popup', token_params: { parse: :json }, :provider_ignores_state => true
+  config.omniauth :github, oauth_secrets[:github_app_id], oauth_secrets[:github_app_id], scope: "user,repo,gist"
 end

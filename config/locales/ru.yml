@@ -16,3 +16,18 @@ ru:
       after_main_txt: 'И даже отчисленные'
     footer:
       work_info: 'Зачетная работа'
+    login_form:
+      login: "Войти"
+      email: "Ваш email"
+      pass: "Пароль"
+      remember: "Запомнить меня"
+      forgot_pass: "Забыли пароль?"
+      login_thru: "Войти через"
+      signup_mess: "Еще не с нами? Зарегистрируйтесь!"
+      form_title: "Вход"
+      already_with_us: "Уже зарегистрированы? Войдите!"
+      create_pass: "Придумайте пароль"
+      repeat_pass: "Повторите пароль"
+      signup: "Зарегистрироваться"
+      signup_title: "Регистрация"
+      search_example: "Пример поиска"

@@ -4,7 +4,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
-         :omniauthable, :omniauth_providers => [:facebook, :vkontakte]
+         :omniauthable, :omniauth_providers => [:vkontakte, :facebook, :github]
 
   validates :email, uniqueness: true
   validates :bf_api_token, uniqueness: true
@@ -66,6 +66,10 @@ class User < ApplicationRecord
         user.image_url = auth.extra.raw_info.photo_400_orig
         user.bf_username = auth.info.name || "nameless"
       end
+    end
+
+    def from_omniauth_github(auth)
+      puts "from omni auth: #{auth}"
     end
   end
 end

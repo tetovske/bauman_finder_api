@@ -7,14 +7,15 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': false
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "https://kit.fontawesome.com/802bb0066f.js", 'crossorigin': 'anonymous'
     link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet" /
   body
-    = render 'layouts/devise_alert'
+    = render 'layouts/devise_alert' 
     nav.navbar.header.is-spaced aria-label=("main navigation") role="navigation"
       .container
         .navbar-brand
           a.navbar-item.logo href="/#{I18n.locale}"
-            p BaumanFinder
+            p BaumanFinder API
           a.navbar-burger.burger aria-expanded="false" aria-label="menu" data-target="navbarBasicExample" role="button" 
             span aria-hidden="true" 
             span aria-hidden="true" 
@@ -41,13 +42,16 @@ html
             - if user_signed_in?
               a.navbar-item
                 = link_to t("home_page.account"), account_path
+            - if user_signed_in? && current_user.is_admin
+              a.navbar-item
+                = link_to 'Админка', account_path
           .navbar-item
             .buttons
-              = button_to "Поруски", "/ru", :method => :get, class: "navbar-item button is-light is-info is-rounded"
-              = button_to "Pindossky", "/en", :method => :get, class: "navbar-item button is-light is-danger is-rounded"
+              = button_to "RU", "/ru", :method => :get, class: "navbar-item button is-light is-info is-rounded"
+              = button_to "EN", "/en", :method => :get, class: "navbar-item button is-light is-danger is-rounded"
           .navbar-end
             - if user_signed_in?
-              = link_to current_user.bf_username, account_path, class: "navbar-item"
+              = link_to account_username, account_path, class: "navbar-item"
             - unless current_user&.image_url.nil?
               a.image.is-48x48
                 = image_tag current_user.image_url, class: "is-rounded"

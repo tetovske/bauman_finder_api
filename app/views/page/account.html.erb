@@ -10,18 +10,27 @@
     </div>
   </div>
 </section>
-<section class="hero is-light">
+<section class="hero is-light is-medium">
   <div class="hero-body">
     <div class="container">
-      <h1 class="subtitle">Используйте этот токен для работы:</h1>
+      <div class="subtitle">Используйте этот токен для работы:</div>
       <div class="field has-addons">
         <div class="control" id="token-input">
-          <input class="input" type="text" readonly="readonly" value="<%= current_user.token %>">
+          <input class="input" type="text" readonly="readonly" value="<%= user_bf_token %>">
         </div>
         <div class="control">
           <%= link_to 'Создать новый', regenerate_token_path, class: "button is-info", remote: true  %>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+<section class="hero is-success is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Классическое использование
+      </h1>
     </div>
   </div>
 </section>
