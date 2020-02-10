@@ -1,4 +1,4 @@
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Metrics/MethodLength:
@@ -8,4 +8,7 @@ Metrics/AbcSize:
   Enabled: false
 
 Lint/AssignmentInCondition:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false
