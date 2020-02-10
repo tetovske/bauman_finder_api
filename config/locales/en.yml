@@ -16,3 +16,18 @@ en:
       after_main_txt: 'And even expelled'
     footer:
       work_info: 'Zachyotnaya rabota by tetovske'
+    login_form:
+      login: "Login"
+      email: "Email"
+      pass: "Password"
+      remember: "Remember me"
+      forgot_pass: "Forgot password?"
+      login_thru: "Login thru"
+      signup_mess: "Not with us yet? Register now!"
+      form_title: "Login!"
+      already_with_us: "Already registered? Login!"
+      create_pass: "Create password"
+      repeat_pass: "Confirm password"
+      signup: "Signup"
+      signup_title: "Registration"
+      search_example: "Example of student searching"
