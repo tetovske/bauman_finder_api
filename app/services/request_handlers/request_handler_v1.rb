@@ -8,6 +8,7 @@ module RequestHandlers
     ]
 
     def call(params = [])
+      params = yield extract_search_params(params)
       yield setup
       yield valid_params?(params)
 
@@ -25,14 +26,14 @@ module RequestHandlers
     end
 
     # validate income params from user
-    def valid_params?(params = [])
+    def valid_params?(params)
       yield validate_search_function(params)
       yield validate_search_args(params)
 
       Success(:validatation_succeeded)
     end
 
-    def validate_search_function(params = [])
+    def validate_search_function(params)
       return Failure(:missing_search_function) unless params.keys.include?(keys['search_method_key_name'])
 
       sup_meth = keys['search_methods']
@@ -41,14 +42,19 @@ module RequestHandlers
       Success()
     end
 
-    def validate_search_args(params = [])
-      search_args = params.reject { |k| %w[search_meth format controller action].include?(k) }
-      return Failure(:missing_search_args) if search_args.empty?
+    def validate_search_args(params)
+      return Failure(:missing_search_args) if params.reject { |k| %w[search_meth].include?(k) }.empty?
 
       sup_args = keys['search_methods_args'].map(&:to_sym)
       return Failure(:invalid_search_args) unless sup_args.all? { |a| sup_args.include?(a) }
 
       Success()
+    end
+
+    def extract_search_params(params)
+      params = params.reject { |k| %w[format controller action].include?(k) }
+
+      Success(params)
     end
   end
 end
