@@ -95,5 +95,9 @@ class Container
     register 'token_generator' do
       Other::TokenGenerator
     end
+
+    register 'strategic_finder' do 
+      Processing::Search::StrategicFinder
+    end
   end
 end

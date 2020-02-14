@@ -38,7 +38,7 @@ search_methods_args:
   - 'faculty'
   - 'department'
   - 'exam_scores'
-search_method_matching:
+search_args_matching:
   'name': 'first_name'
   'last_name': 'last_name'
   'mid_name': 'mid_name'
