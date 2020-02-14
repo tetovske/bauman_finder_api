@@ -1,5 +1,3 @@
-
-
 module Processing
   class Finder < Service
     include Dry::Monads[:result, :do, :maybe, :try]
@@ -8,8 +6,8 @@ module Processing
     ]
 
     def call(search_function, search_args = {})
-      match_search_methods()
-      yield select_method(search_function, search_args)
+      data = yield match_search_args(search_args)
+      yield select_method(search_function, data)
     end
 
     private
@@ -17,22 +15,23 @@ module Processing
     def select_method(search_function, search_args)
       case search_function
       when :find
-        ->()
+        Success(Student.where(search_args))
       when :find_first
-        Student.find_by()
+        Success(Student.where(search_args).first)
       when :find_except
-        find_except(search_args)
+        Success(Student.where.not(search_args))
       when :find_except_first
-        find_except_first(search_args)
+        Success(Student.where.not(search_args).first)
       else
         Failure(:unknown_search_function)
       end
     end
 
-    def match_search_methods(srch)
-      args = key_keeper.call['search_method_matching']
-                .transform_keys(&:to_sym).transform_values { '*' }
-      srch.transform_keys(&:to_sym)
+    def match_search_args(srch)
+      mth_match = key_keeper.call.value_or({})['search_method_matching']
+      srch = srch.map { |k, v| [mth_match[k.to_s], v] if mth_match.key?(k.to_s) }.compact.to_h
+
+      Success(srch)
     end
   end
 end

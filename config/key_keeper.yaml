@@ -28,6 +28,7 @@ search_methods:
   - 'find_first'
   - 'find_except'
   - 'find_except_first'
+token_arg_name: 'APIKEY'
 search_methods_args:
   - 'name'
   - 'last_name'

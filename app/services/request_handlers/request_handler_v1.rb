@@ -11,6 +11,7 @@ module RequestHandlers
       params = yield extract_search_params(params)
       yield setup
       yield valid_params?(params)
+      yield valid_token?(params)
 
       Success(:succeeded)
     end
@@ -43,10 +44,13 @@ module RequestHandlers
     end
 
     def validate_search_args(params)
-      return Failure(:missing_search_args) if params.reject { |k| %w[search_meth].include?(k) }.empty?
+      return Failure(:missing_token) unless params.key?(keys['token_arg_name'].to_sym)
+
+      params = params.reject { |k| [keys['search_method_key_name'], keys['token_arg_name']].include?(k) }
+      return Failure(:missing_search_args) if params.empty?
 
       sup_args = keys['search_methods_args'].map(&:to_sym)
-      return Failure(:invalid_search_args) unless sup_args.all? { |a| sup_args.include?(a) }
+      return Failure(:invalid_search_args) unless params.keys.all? { |a| sup_args.include?(a.to_sym) }
 
       Success()
     end
@@ -55,6 +59,13 @@ module RequestHandlers
       params = params.reject { |k| %w[format controller action].include?(k) }
 
       Success(params)
+    end
+
+    def valid_token?(params)
+      Maybe(User.find_by(bf_api_token: params[keys['token_arg_name']])).bind { Success() }.or(Failure(:invalid_token))
+    end
+
+    def generate_response
     end
   end
 end
