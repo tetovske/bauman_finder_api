@@ -4,16 +4,27 @@ module RequestHandlers
   class RequestHandlerV1 < Service
     include Dry::Monads[:result, :do, :maybe, :try]
     include Dry::AutoInject(Container)[
-      'services.key_keeper'
+      'services.key_keeper',
+      bf: 'services.finder'
     ]
 
     def call(params = [])
-      params = yield extract_search_params(params)
-      yield setup
-      yield valid_params?(params)
-      yield valid_token?(params)
-
-      Success(:succeeded)
+      handle(params).bind do |data|
+        Success(
+          {
+            status: :success,
+            data: data
+          }
+        )
+      end.or do |err|
+        Success(
+          {
+            status: :failed,
+            cause: err,
+            data: []
+          }
+        )
+      end
     end
 
     private
@@ -24,6 +35,19 @@ module RequestHandlers
       self.keys = yield key_keeper.call
 
       Success()
+    end
+    
+    def handle(params)
+      params = yield extract_search_params(params)
+      yield setup
+      yield valid_params?(params)
+      yield valid_token?(params)
+      data = yield bf.call(
+        params[keys['search_method_key_name'].to_sym],
+        params.reject { |k| k.eql?(keys['search_method_key_name']) or k.eql?(keys['token_arg_name']) }
+      )
+
+      Success(data)
     end
 
     # validate income params from user
@@ -63,9 +87,6 @@ module RequestHandlers
 
     def valid_token?(params)
       Maybe(User.find_by(bf_api_token: params[keys['token_arg_name']])).bind { Success() }.or(Failure(:invalid_token))
-    end
-
-    def generate_response
     end
   end
 end
