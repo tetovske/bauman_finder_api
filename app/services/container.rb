@@ -97,7 +97,11 @@ class Container
     end
 
     register 'strategic_finder' do 
-      Processing::Search::StrategicFinder
+      Bf::SearchLogic::StrategicFinder
+    end
+
+    register 'finder' do
+      Bf::Finder
     end
   end
 end
