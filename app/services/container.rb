@@ -80,8 +80,8 @@ class Container
       JWT
     end
 
-    register 'request_handler' do
-      RequestHandlers::RequestHandler
+    register 'request_handler_v2' do
+      RequestHandlers::RequestHandlerV2
     end
 
     register 'request_handler_v1' do

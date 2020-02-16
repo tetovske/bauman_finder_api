@@ -3,7 +3,7 @@
 # Application controller class
 class ApplicationController < ActionController::Base
   layout 'application'
-  protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
   before_action :language_set
   helper_method :users_in_db
 
