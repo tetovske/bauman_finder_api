@@ -9,7 +9,7 @@ module Api
       ]
 
       def handle_request
-        @response = handler_v1.call(params).value_or(&:to_s)
+        @response = handler_v1.call(params).value!
         render :handle_request
       end
     end

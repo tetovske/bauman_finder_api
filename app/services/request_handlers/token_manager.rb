@@ -11,6 +11,7 @@ module RequestHandlers
     end
 
     def check_token(token)
+      token = restore_jwt_token(token)
       Other::JwtDecoder.call.decode_key(token).bind do |data|
         exp = data['expires'].to_time
         return true if (exp - Time.now).positive? && !BlackList.in_black_list?(token)
@@ -21,12 +22,8 @@ module RequestHandlers
     end
 
     def destroy_token(token)
-      rec = BlackList.new(token: token)
-      if rec.valid?
-        rec.save
-        return true
-      end
-      false
+      token = restore_jwt_token(token)
+      BlackList.find_or_create_by(token: token)
     end
 
     def generate_token(email)
@@ -38,9 +35,14 @@ module RequestHandlers
     end
 
     def find_by_token(token)
+      token = restore_jwt_token(token)
       Other::JwtDecoder.call.decode_key(token).bind do |val|
         return User.find_by(email: val['user_email'])
       end
+    end
+
+    def restore_jwt_token(token)
+      "eyJhbGciOiJIUzI1NiJ9.#{token}"
     end
   end
 end

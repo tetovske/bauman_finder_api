@@ -9,9 +9,8 @@ module Bf
     def call(search_function, search_args = {})
       yield setup
       data = yield find_by_strategy(search_function, search_args)
-      result = yield prepare_columns(data)
 
-      Success(result)
+      Success(data)
     end
 
     private
@@ -31,16 +30,6 @@ module Bf
       end
 
       Success(inter_search)
-    end
-
-    def prepare_columns(data)
-      data = data.to_a.map do |rec|
-        rec.tap do |s|
-          #s.subject_data = JSON.parse(s.subject_data) unless s.subject_data.nil?
-        end
-      end 
-      p "PREPARE RESLUT: #{data}"
-      Success(data)
     end
   end
 end

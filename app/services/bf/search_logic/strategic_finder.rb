@@ -52,7 +52,7 @@ module Bf
         super
         @search_methods = {
           find: ->(data, args) { data.where(args) },
-          find_except: ->(data, args) { data.where.not(args.first.first => args.first.last) }
+          find_except: ->(data, args) { data.where.not(args) }
         }
       end
 
@@ -66,13 +66,14 @@ module Bf
       def initialize
         super
         @search_methods = {
-          find: ->(args) { Student.joins(:group).where(groups: { name: args }) },
-          find_except: ->() { Student.joins(:group).where.not(groups: { name: args }) }
+          find: ->(data, args) { data.joins(:group).where(groups: { name: args }) },
+          find_except: ->(data, args) { data.joins(:group).where.not(groups: { name: args }) }
         }
       end
 
-      def search(search_func, args)
-        search_methods[search_func].call(args.values.first)
+      def search(data, search_func, args)
+        args = args.transform_keys { |key| keys['search_args_matching'][key.to_s] }
+        search_methods[search_func].call(data, args.values.first)
       end
     end
   end

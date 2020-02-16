@@ -23,9 +23,7 @@ Rails.application.routes.draw do
 
     scope module: 'v2', path: 'v2' do
       resources :auth, only: [:create]
-      resources :user, only: [:destroy]
       delete '/signout' => 'auth#signout'
-      post '/signup' => 'user#create'
       get '/find' => 'find#find'
     end
   end
