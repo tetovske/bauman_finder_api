@@ -10,10 +10,15 @@ class User < ApplicationRecord
   validates :bf_api_token, uniqueness: true
   before_create :generate_token
 
+  # jwt token
   def update_token
-    BlackList.destroy_token(token)
+    BlackList.destroy_token(jwt_token)
     new_token = BlackList.generate_token(email)
-    update(token: new_token)
+    update(jwt_token: new_token)
+  end
+
+  def jwt_payload
+    jwt_token.match(/\.(\w+\.\w+)/)[1]
   end
 
   def username
@@ -40,7 +45,6 @@ class User < ApplicationRecord
     end
 
     def new_with_session(params, session)
-      puts "NEW USER SESSION: #{params}  SESSION: #{session}"
       super.tap do |user|
         if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
           user.email = data["email"] if user.email.blank?
@@ -49,15 +53,15 @@ class User < ApplicationRecord
     end
     
     def from_omniauth_facebook(auth)
-      puts "FROM OMNIAUTH METHOD: #{auth.to_json}"
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
+        user.bf_username = auth.info.name
+        user.image_url = auth.info.image
       end
     end
 
     def from_omniauth_vk(auth)
-      puts "FROM OMNIAUTH METHOD: #{auth.to_json}"
       where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
         user.uid = auth.uid
         user.provider = auth.provider
@@ -69,7 +73,12 @@ class User < ApplicationRecord
     end
 
     def from_omniauth_github(auth)
-      puts "from omni auth: #{auth}"
+      where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+        user.uid = auth.uid
+        user.provider = auth.provider
+        user.email = auth.info.email
+        user.password = Other::TokenGenerator.call(6).value_or("123456")
+      end
     end
   end
 end

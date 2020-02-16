@@ -2,9 +2,9 @@
 
 require 'json'
 
-module V2
+module Api
   # module Api
-  module Api
+  module V2
     # Authorization controller
     class AuthController < ApplicationController
       include Dry::Monads[:try, :maybe]
@@ -14,10 +14,9 @@ module V2
 
       def create
         if data = params['auth']
-          usr = User.find_by(email: data['email'])
-          if usr&.valid_password?(data['password'])
-            usr.update_token
-            @user = usr
+          @user = User.find_by(email: data['email'])
+          if @user&.valid_password?(data['password'])
+            @user.update_token
             render :create, content_type: 'application/json'
           else
             render json: { message: 'unauthorized user!' }
@@ -29,10 +28,8 @@ module V2
 
       def signout
         if token = request.headers['token']
-          Maybe(BlackList.find_by_token(token)).bind do |_user|
-            msg = BlackList.destroy_token(token) ? 'token destroyed!' : 'token already destroyed!'
-            render json: { message: msg }
-          end
+          BlackList.destroy_token(token)
+          render json: { message: 'token successfully destroyed!' }
         else
           render json: { message: 'invalid params!' }
         end
