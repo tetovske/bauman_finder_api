@@ -44,7 +44,7 @@ html
                 = link_to t("home_page.account"), account_path
             - if user_signed_in? && current_user.is_admin
               a.navbar-item
-                = link_to 'Админка', account_path
+                = link_to t("home_page.admin"), admin_path
           .navbar-item
             .buttons
               = button_to "RU", "/ru", :method => :get, class: "navbar-item button is-light is-info is-rounded"
