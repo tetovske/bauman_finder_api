@@ -1,6 +1,6 @@
 var new_token = `
   <input class="input is-success" type="text" readonly="readonly" value="<%= current_user.bf_api_token %>">
-  <p class="help is-success">Токен успешно обновлен!</p>
+  <p class="help is-success"><%= t 'account.token_updated' %></p>
 `;
 
 $('#token-input').empty();

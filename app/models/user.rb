@@ -10,21 +10,24 @@ class User < ApplicationRecord
   validates :bf_api_token, uniqueness: true
   before_create :generate_token
 
-  # jwt token
+  # updates jwt token
   def update_token
     BlackList.destroy_token(jwt_token)
     new_token = BlackList.generate_token(email)
     update(jwt_token: new_token)
   end
 
+  # get token part for user
   def jwt_payload
     jwt_token.match(/\.(\w+\.\w+)/)[1]
   end
 
+  # parse username from email
   def username
     email.match(/[^@]+/).to_s
   end
 
+  # generates bf token for v1 api
   def generate_token
     begin
       token = Other::TokenGenerator.call(25).value_or("")

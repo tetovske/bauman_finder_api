@@ -2,10 +2,10 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Добро пожаловать, <%= account_username %>
+        <%= t "account.welcome" %>, <%= account_username %>
       </h1>
       <h2 class="subtitle">
-        Посмотрите краткий туториал по использованию!
+        <%= t "account.welcome_subtitle" %>
       </h2>
     </div>
   </div>
@@ -13,13 +13,13 @@
 <section class="hero is-light is-medium">
   <div class="hero-body">
     <div class="container">
-      <div class="subtitle">Используйте этот токен для работы:</div>
+      <div class="subtitle"><%= t "account.use_this_token" %>:</div>
       <div class="field has-addons">
         <div class="control" id="token-input">
           <input class="input" type="text" readonly="readonly" value="<%= user_bf_token %>">
         </div>
         <div class="control">
-          <%= link_to 'Создать новый', regenerate_token_path, class: "button is-info", remote: true  %>
+          <%= link_to t('account.create_new_token'), regenerate_token_path, class: "button is-info", remote: true  %>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Классическое использование
+        <%= t "account.tutorial_v1_title" %>
       </h1>
     </div>
   </div>
