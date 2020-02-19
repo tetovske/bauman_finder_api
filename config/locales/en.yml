@@ -2,6 +2,7 @@ en:
   home_page:
     doc: 'Documentation'
     about_api: 'About API'
+    admin: 'Admin panel'
     login: 'Login'
     logout: 'Logout'
     signup: 'Start using API'
@@ -31,3 +32,16 @@ en:
       signup: "Signup"
       signup_title: "Registration"
       search_example: "Example of student searching"
+  admin_panel:
+    title: "Users"
+    reg_date: "Registration date"
+    delete_user: "Delete user"
+    create_admin: "Give admin rights"
+    destroy_admin: "Revoke admin rights"
+  account:
+    welcome: "Welcome"
+    welcome_subtitle: "Check out a quick tutorial on how to use it!"
+    use_this_token: "Use this token for V1 API"
+    create_new_token: "Refresh token"
+    token_updated: "Token successfully updated!"
+    tutorial_v1_title: "API V1"

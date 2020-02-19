@@ -2,6 +2,7 @@ ru:
   home_page:
     doc: 'Документация'
     about_api: 'Об API'
+    admin: 'Админка'
     login: 'Войти'
     logout: 'Выйти'
     signup: 'Начать использовать API'
@@ -31,3 +32,17 @@ ru:
       signup: "Зарегистрироваться"
       signup_title: "Регистрация"
       search_example: "Пример поиска"
+  admin_panel:
+    title: "Пользователи"
+    reg_date: "Дата регистрации"
+    delete_user: "Удалить пользователя"
+    create_admin: "Сделать админом"
+    destroy_admin: "Убрать права админа"
+  account:
+    welcome: "Добро пожаловать"
+    welcome_subtitle: "Посмотрите краткий туториал по использованию!"
+    use_this_token: "Используйте этот токен для работы"
+    create_new_token: "Обновить токен"
+    token_updated: "Токен успешно обновлен!"
+    tutorial_v1_title: "Использование API с помощью ключа (V1)"
+      
