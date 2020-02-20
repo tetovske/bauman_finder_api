@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
   include Devise
   before_action :check_admin, only: [:admin]
+  REFRESH_USERS_JS = 'refresh_user_list.js.erb'
   
   def admin; end
 
@@ -9,7 +10,7 @@ class AdminController < ApplicationController
     unless usr.nil?
       User.destroy(usr.id)
     end
-    respond_to { |format| format.js }
+    respond_to { |format| format.js { render action: REFRESH_USERS_JS } }
   end
 
   def change_permissions
@@ -20,7 +21,7 @@ class AdminController < ApplicationController
         u.save!
       end
     end
-    respond_to { |format| format.js }
+    respond_to { |format| format.js { render action: REFRESH_USERS_JS } }
   end
 
   private 
