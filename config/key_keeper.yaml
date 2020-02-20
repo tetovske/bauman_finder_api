@@ -34,9 +34,7 @@ search_methods_args:
   - 'last_name'
   - 'mid_name'
   - 'group'
-  - 'year_of_admission' 
-  - 'faculty'
-  - 'department'
+  - 'year_of_admission'
   - 'exam_scores'
 search_args_matching:
   'name': 'first_name'
