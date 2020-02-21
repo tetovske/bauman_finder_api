@@ -7,7 +7,7 @@
           <article class="tile is-child notification is-success">
             <% student = random_student(:with_subj_data) %>
             <p class="title">
-              <%= student.last_name %> <%= student.first_name %> <%= student.mid_name %>
+              <%= student&.last_name %> <%= student&.first_name %> <%= student&.mid_name %>
             </p>
             <p class="subtitle">Обучается в группе: <%= student.group.name %></p>
             <div class="content">
