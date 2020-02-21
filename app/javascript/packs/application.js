@@ -18,3 +18,4 @@
 require("@rails/ujs").start()
 require('jquery')
 require('packs/animation')
+require('packs/notification')

@@ -1,8 +1,8 @@
 {
   "animation.js": "/packs/js/animation-5fbf5a4c00ce325bbc15.js",
   "animation.js.map": "/packs/js/animation-5fbf5a4c00ce325bbc15.js.map",
-  "application.js": "/packs/js/application-8c0dcb38a0f669ce9ab9.js",
-  "application.js.map": "/packs/js/application-8c0dcb38a0f669ce9ab9.js.map",
+  "application.js": "/packs/js/application-a0e2b53012c27c301d94.js",
+  "application.js.map": "/packs/js/application-a0e2b53012c27c301d94.js.map",
   "entrypoints": {
     "animation": {
       "js": [
@@ -14,11 +14,21 @@
     },
     "application": {
       "js": [
-        "/packs/js/application-8c0dcb38a0f669ce9ab9.js"
+        "/packs/js/application-a0e2b53012c27c301d94.js"
       ],
       "js.map": [
-        "/packs/js/application-8c0dcb38a0f669ce9ab9.js.map"
+        "/packs/js/application-a0e2b53012c27c301d94.js.map"
+      ]
+    },
+    "notification": {
+      "js": [
+        "/packs/js/notification-31d8fdebe6b25526d9f5.js"
+      ],
+      "js.map": [
+        "/packs/js/notification-31d8fdebe6b25526d9f5.js.map"
       ]
     }
-  }
+  },
+  "notification.js": "/packs/js/notification-31d8fdebe6b25526d9f5.js",
+  "notification.js.map": "/packs/js/notification-31d8fdebe6b25526d9f5.js.map"
 }

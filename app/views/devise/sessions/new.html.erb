@@ -6,13 +6,13 @@
           <article class="tile is-child notification is-danger">
             <% student = random_student(:with_subj_data) %>
             <p class="title">
-              <%= student.last_name %> <%= student.first_name %> <%= student.mid_name %>
+              <%= student&.last_name %> <%= student&.first_name %> <%= student&.mid_name %>
             </p>
-            <p class="subtitle">Обучается в группе: <%= student.group.name %></p>
+            <p class="subtitle">Обучается в группе: <%= student&.group&.name %></p>
             <div class="content">
-              <% JSON.parse(student.subject_data).each do |key, value| %>
+              <% JSON.parse(student&.subject_data).each do |key, value| %>
                 <div><%= key %>: <%= value %></div>
-              <% end %>
+              <% end unless student&.subject_data.nil? %>
             </div>
           </article>
         </div>
