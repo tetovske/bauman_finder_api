@@ -111,6 +111,7 @@ GEM
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.6)
+    database_cleaner (1.8.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -150,6 +151,10 @@ GEM
     et-orbi (1.2.2)
       tzinfo
     execjs (2.7.0)
+    factory_bot (5.1.1)
+      activesupport (>= 4.2.0)
+    faker (2.10.2)
+      i18n (>= 1.6, < 2)
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
@@ -292,6 +297,10 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rspec (3.9.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
     rspec-expectations (3.9.0)
@@ -394,11 +403,14 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails
+  database_cleaner
   devise
   dry-auto_inject
   dry-container
   dry-monads
   dry-transaction
+  factory_bot
+  faker
   haml
   interactor
   jbuilder (~> 2.7)
@@ -419,6 +431,7 @@ DEPENDENCIES
   rails (= 6.0.1)
   rails-i18n (~> 6.0.0)
   rails-ujs
+  rspec
   rspec-rails
   sass-rails (~> 5)
   selenium-webdriver
