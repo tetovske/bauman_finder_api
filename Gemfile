@@ -68,8 +68,6 @@ gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 
-gem 'news-api'
-
 # For web parsing
 gem 'selenium-webdriver'
 gem 'mechanize'
@@ -80,9 +78,7 @@ gem 'rails-i18n', '~> 6.0.0'
 
 # CSS lib
 gem 'bulma-rails', '~> 0.8.0'
-
 gem 'particles-js-rails'
-
 gem 'rails-ujs'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible

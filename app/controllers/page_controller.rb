@@ -12,8 +12,8 @@ class PageController < ApplicationController
   def account; end
 
   def regenerate_token
-    current_user.generate_token
-    current_user.save
+    current_user&.generate_token
+    current_user&.save
     respond_to :js
   end
 end
