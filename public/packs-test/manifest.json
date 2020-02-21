@@ -1,0 +1,34 @@
+{
+  "animation.js": "/packs-test/js/animation-fd4269092bb9aecb7380.js",
+  "animation.js.map": "/packs-test/js/animation-fd4269092bb9aecb7380.js.map",
+  "application.js": "/packs-test/js/application-2684d8592ebdfca85dd9.js",
+  "application.js.map": "/packs-test/js/application-2684d8592ebdfca85dd9.js.map",
+  "entrypoints": {
+    "animation": {
+      "js": [
+        "/packs-test/js/animation-fd4269092bb9aecb7380.js"
+      ],
+      "js.map": [
+        "/packs-test/js/animation-fd4269092bb9aecb7380.js.map"
+      ]
+    },
+    "application": {
+      "js": [
+        "/packs-test/js/application-2684d8592ebdfca85dd9.js"
+      ],
+      "js.map": [
+        "/packs-test/js/application-2684d8592ebdfca85dd9.js.map"
+      ]
+    },
+    "notification": {
+      "js": [
+        "/packs-test/js/notification-4952855c50a9dbe2c23b.js"
+      ],
+      "js.map": [
+        "/packs-test/js/notification-4952855c50a9dbe2c23b.js.map"
+      ]
+    }
+  },
+  "notification.js": "/packs-test/js/notification-4952855c50a9dbe2c23b.js",
+  "notification.js.map": "/packs-test/js/notification-4952855c50a9dbe2c23b.js.map"
+}
