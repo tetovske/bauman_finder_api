@@ -11,18 +11,14 @@ module RequestHandlers
     def call(params = [])
       handle(params).bind do |data|
         Success(
-          {
-            status: :success,
-            data: data
-          }
+          status: :success,
+          data: data
         )
       end.or do |err|
         Success(
-          {
-            status: :failed,
-            cause: err,
-            data: []
-          }
+          status: :failed,
+          cause: err,
+          data: []
         )
       end
     end
@@ -36,7 +32,7 @@ module RequestHandlers
 
       Success()
     end
-    
+
     def handle(params)
       params = yield extract_search_params(params)
       yield setup
@@ -44,7 +40,7 @@ module RequestHandlers
       yield valid_token?(params)
       data = yield bf.call(
         params[keys['search_method_key_name'].to_sym],
-        params.reject { |k| k.eql?(keys['search_method_key_name']) or k.eql?(keys['token_arg_name']) }
+        params.reject { |k| k.eql?(keys['search_method_key_name']) || k.eql?(keys['token_arg_name']) }
       )
 
       Success(data)

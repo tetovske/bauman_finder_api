@@ -22,23 +22,8 @@ html
             span aria-hidden="true" 
         #navbarBasicExample.navbar-menu
           .navbar-start
-            .navbar-item.has-dropdown.is-hoverable
-              a.navbar-link
-                = t "home_page.doc"
-              .navbar-dropdown
-                a.navbar-item
-                  = t :doc
-                a.navbar-item
-                  | Запросы с использованием токена
-                a.navbar-item
-                  | JWT запросы (Beta)
-                hr.navbar-divider/
-                a.navbar-item
-                  | Простейшие запросы
-                a.navbar-item
-                  | Поиск по группам
-                a.navbar-item
-                  | Сортировки
+            a.navbar-item
+              = link_to t("home_page.doc"), doc_path
             - if user_signed_in?
               a.navbar-item
                 = link_to t("home_page.account"), account_path

@@ -33,7 +33,7 @@
         </p>
       </div>
       <div class="content">
-        <span>Дата регистрации: <%= u.created_at %></span>
+        <span><%= t "admin_panel.reg_date" %>: <%= u.created_at %></span>
       </div>
     </div>
     <div class="media-right">
@@ -42,7 +42,7 @@
           <span class="icon is-small">
             <i class="fas fa-backspace"></i>  
           </span>
-          <span>Удалить пользователя</span>
+          <span><%= t "admin_panel.delete_user" %></span>
         <% end %>
       </div>
       <div class="control">
@@ -51,14 +51,14 @@
             <span class="icon is-small ">
               <i class="fas fa-tools"></i>
             </span>
-            <span>Сделать админом</span>
+            <span><%= t "admin_panel.create_admin" %></span>
           <% end %>
         <% else %>
           <%= button_to change_permissions_for_path(u), method: :post, remote: true, class: "button is-warning" do %>
             <span class="icon is-small ">
               <i class="fas fa-tools"></i>
             </span>
-            <span>Убрать права админа</span>
+            <span><%= t "admin_panel.destroy_admin" %></span>
           <% end %>
         <% end %>
       </div>

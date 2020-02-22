@@ -4,7 +4,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
-         :omniauthable, :omniauth_providers => [:vkontakte, :facebook, :github]
+         :omniauthable, omniauth_providers: %i[vkontakte facebook github]
 
   validates :email, uniqueness: true
   validates :bf_api_token, uniqueness: true
@@ -30,7 +30,7 @@ class User < ApplicationRecord
   # generates bf token for v1 api
   def generate_token
     begin
-      token = Other::TokenGenerator.call(25).value_or("")
+      token = Other::TokenGenerator.call(25).value_or('')
     end until !User.where(token: token).nil?
     self.bf_api_token = token
   end
@@ -49,16 +49,16 @@ class User < ApplicationRecord
 
     def new_with_session(params, session)
       super.tap do |user|
-        if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-          user.email = data["email"] if user.email.blank?
+        if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
+          user.email = data['email'] if user.email.blank?
         end
       end
     end
-    
+
     def from_omniauth_facebook(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
         user.email = auth.info.email
-        user.password = Devise.friendly_token[0,20]
+        user.password = Devise.friendly_token[0, 20]
         user.bf_username = auth.info.name
         user.image_url = auth.info.image
       end
@@ -69,9 +69,9 @@ class User < ApplicationRecord
         user.uid = auth.uid
         user.provider = auth.provider
         user.email = auth.info.email
-        user.password = Other::TokenGenerator.call(6).value_or("123456")
+        user.password = Other::TokenGenerator.call(6).value_or('123456')
         user.image_url = auth.extra.raw_info.photo_400_orig
-        user.bf_username = auth.info.name || "nameless"
+        user.bf_username = auth.info.name || 'nameless'
       end
     end
 
@@ -80,7 +80,7 @@ class User < ApplicationRecord
         user.uid = auth.uid
         user.provider = auth.provider
         user.email = auth.info.email
-        user.password = Other::TokenGenerator.call(6).value_or("123456")
+        user.password = Other::TokenGenerator.call(6).value_or('123456')
       end
     end
   end
