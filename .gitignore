@@ -20,3 +20,8 @@
 /node_modules
 
 /config/master.key
+.gitignore
+
+dad
+dump.rdb
+wk.code-workspace
