@@ -22927,3 +22927,291 @@ Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 1.4ms | Allocations: 7264
   [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "trevor@ritchie.io"], ["LIMIT", 1]]
   [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "Sa2F7q7P9lIs"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "black_lists" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "groups" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "form_of_studies" DISABLE TRIGGER ALL;ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "students" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'bf_db_test'[0m
+  [1m[35m (928.6ms)[0m  [1m[35mTRUNCATE TABLE "public"."black_lists", "public"."groups", "public"."users", "public"."form_of_studies", "public"."companies", "public"."students" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "black_lists" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "groups" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "form_of_studies" ENABLE TRIGGER ALL;ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "students" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/v1/find" for 127.0.0.1 at 2020-02-22 23:22:14 +0300
+Processing by Api::V1::ApiRequestController#handle_request as JSON
+  Parameters: {"search_meth"=>"find"}
+  Rendering api/v1/api_request/handle_request.json.jbuilder
+  Rendered api/v1/api_request/handle_request.json.jbuilder (Duration: 0.6ms | Allocations: 312)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 3942)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "preston.cormier@runolfon.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "preston.cormier@runolfon.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "C21lCh4Ea79Gb241"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "bf_api_token", "confirmed_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "preston.cormier@runolfon.co"], ["encrypted_password", "$2a$04$KVPoQ1B790U7into..RLNOUCH4sIUz.a37DcDeBmU8Mag/KqFx1K6"], ["created_at", "2020-02-22 20:22:14.815836"], ["updated_at", "2020-02-22 20:22:14.815836"], ["bf_api_token", "L9kip7e7wIBP5ak9O165gxV2N"], ["confirmed_at", "2020-02-22 00:00:00"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/v1/find?APIKEY=L9kip7e7wIBP5ak9O165gxV2N" for 127.0.0.1 at 2020-02-22 23:22:14 +0300
+Processing by Api::V1::ApiRequestController#handle_request as JSON
+  Parameters: {"APIKEY"=>"L9kip7e7wIBP5ak9O165gxV2N", "search_meth"=>"find"}
+  Rendering api/v1/api_request/handle_request.json.jbuilder
+  Rendered api/v1/api_request/handle_request.json.jbuilder (Duration: 0.1ms | Allocations: 84)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 626)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ray@streichjast.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ray@streichjast.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "ZtNx9O20y"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "bf_api_token", "confirmed_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "ray@streichjast.org"], ["encrypted_password", "$2a$04$frXOrDIIuS463tg3eYi32ezSEFU.kxh5HZvxy4GKmaqE6p/ape7mO"], ["created_at", "2020-02-22 20:22:14.833406"], ["updated_at", "2020-02-22 20:22:14.833406"], ["bf_api_token", "RzSU5fqyTuodEJffbvsgW2wz6"], ["confirmed_at", "2020-02-22 00:00:00"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/v1/finds?APIKEY=RzSU5fqyTuodEJffbvsgW2wz6" for 127.0.0.1 at 2020-02-22 23:22:14 +0300
+Processing by Api::V1::ApiRequestController#handle_request as JSON
+  Parameters: {"APIKEY"=>"RzSU5fqyTuodEJffbvsgW2wz6", "search_meth"=>"finds"}
+  Rendering api/v1/api_request/handle_request.json.jbuilder
+  Rendered api/v1/api_request/handle_request.json.jbuilder (Duration: 0.1ms | Allocations: 84)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 589)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kim@bayer.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kim@bayer.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "KzMrPcM6nA"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "bf_api_token", "confirmed_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "kim@bayer.info"], ["encrypted_password", "$2a$04$V8Wv8621agBWzme5el8ho.2kAV5S0Nxcb5VuIirtvQQ9MUSplnWd6"], ["created_at", "2020-02-22 20:22:14.876725"], ["updated_at", "2020-02-22 20:22:14.876725"], ["bf_api_token", "Zdxq7jWjxXT05zWKPfr7CZWNy"], ["confirmed_at", "2020-02-22 00:00:00"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/v1/find?APIKEY=Zdxq7jWjxXT05zWKPfr7CZWNy&name=Name" for 127.0.0.1 at 2020-02-22 23:22:14 +0300
+Processing by Api::V1::ApiRequestController#handle_request as JSON
+  Parameters: {"APIKEY"=>"Zdxq7jWjxXT05zWKPfr7CZWNy", "name"=>"Name", "search_meth"=>"find"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "Zdxq7jWjxXT05zWKPfr7CZWNy"], ["LIMIT", 1]]
+  Rendering api/v1/api_request/handle_request.json.jbuilder
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."first_name" = $1[0m  [["first_name", "Name"]]
+  Rendered api/v1/api_request/handle_request.json.jbuilder (Duration: 1.3ms | Allocations: 233)
+Completed 200 OK in 12ms (Views: 1.5ms | ActiveRecord: 2.0ms | Allocations: 3529)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStudent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."id_stud" = $1 LIMIT $2[0m  [["id_stud", "B578iK4f"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.6ms)[0m  [1m[32mINSERT INTO "students" ("created_at", "updated_at", "first_name", "last_name", "id_stud") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2020-02-22 20:22:14.910535"], ["updated_at", "2020-02-22 20:22:14.910535"], ["first_name", "Илья"], ["last_name", "Фадеев"], ["id_stud", "B578iK4f"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (3.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "otis_schuster@leuschke.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "otis_schuster@leuschke.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "YoFjXdVh8WdZ"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "bf_api_token", "confirmed_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "otis_schuster@leuschke.co"], ["encrypted_password", "$2a$04$1rXyTRR0pwb1A4w76gnhR.T8dUn1MeH1wMxDC1rSBv/h1AgFfINxS"], ["created_at", "2020-02-22 20:22:14.920288"], ["updated_at", "2020-02-22 20:22:14.920288"], ["bf_api_token", "TsBhAEqfF6i11GqzaThjhpp5I"], ["confirmed_at", "2020-02-22 00:00:00"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/v1/find?APIKEY=TsBhAEqfF6i11GqzaThjhpp5I&name=%D0%98%D0%BB%D1%8C%D1%8F" for 127.0.0.1 at 2020-02-22 23:22:14 +0300
+Processing by Api::V1::ApiRequestController#handle_request as JSON
+  Parameters: {"APIKEY"=>"TsBhAEqfF6i11GqzaThjhpp5I", "name"=>"Илья", "search_meth"=>"find"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "TsBhAEqfF6i11GqzaThjhpp5I"], ["LIMIT", 1]]
+  Rendering api/v1/api_request/handle_request.json.jbuilder
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."first_name" = $1[0m  [["first_name", "Илья"]]
+  Rendered api/v1/api_request/handle_request.json.jbuilder (Duration: 4.3ms | Allocations: 2806)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 0.6ms | Allocations: 3928)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStudent Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."id_stud" = $1 LIMIT $2[0m  [["id_stud", "IoVpD0oFi"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.3ms)[0m  [1m[32mINSERT INTO "students" ("created_at", "updated_at", "first_name", "last_name", "id_stud") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2020-02-22 20:22:14.939659"], ["updated_at", "2020-02-22 20:22:14.939659"], ["first_name", "Лука"], ["last_name", "Семенов"], ["id_stud", "IoVpD0oFi"]]
+  [1m[35m (1.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fred@batztorphy.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (3.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fred@batztorphy.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "G41dPoB19w0A"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "bf_api_token", "confirmed_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "fred@batztorphy.org"], ["encrypted_password", "$2a$04$KzMmmFT6vMvahPDDLPeVNOw1WcHzpIDuf1fkBFt2WxMx6F2PkSExS"], ["created_at", "2020-02-22 20:22:14.951616"], ["updated_at", "2020-02-22 20:22:14.951616"], ["bf_api_token", "BJWkNNGOBlq4VQzmUUDILJiTE"], ["confirmed_at", "2020-02-22 00:00:00"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/v1/find_except?APIKEY=BJWkNNGOBlq4VQzmUUDILJiTE&name=" for 127.0.0.1 at 2020-02-22 23:22:14 +0300
+Processing by Api::V1::ApiRequestController#handle_request as JSON
+  Parameters: {"APIKEY"=>"BJWkNNGOBlq4VQzmUUDILJiTE", "name"=>"", "search_meth"=>"find_except"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "BJWkNNGOBlq4VQzmUUDILJiTE"], ["LIMIT", 1]]
+  Rendering api/v1/api_request/handle_request.json.jbuilder
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."first_name" != $1[0m  [["first_name", ""]]
+  Rendered api/v1/api_request/handle_request.json.jbuilder (Duration: 1.3ms | Allocations: 389)
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.6ms | Allocations: 1517)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/ru" for 127.0.0.1 at 2020-02-22 23:22:14 +0300
+Processing by PageController#home as HTML
+  Parameters: {"region"=>"ru"}
+  Rendering page/home.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "students"[0m
+  Rendered page/home.html.erb within layouts/application (Duration: 1.8ms | Allocations: 600)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.21.1
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+error Couldn't find a package.json file in "/home/tetovske/YAIP/bauman_finder_api"
+
+  Rendered layouts/_devise_alert.html.erb (Duration: 4.8ms | Allocations: 293)
+Completed 200 OK in 2056ms (Views: 2055.0ms | ActiveRecord: 0.5ms | Allocations: 452836)
+Started GET "/en" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by PageController#home as HTML
+  Parameters: {"region"=>"en"}
+  Rendering page/home.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "students"[0m
+  Rendered page/home.html.erb within layouts/application (Duration: 0.9ms | Allocations: 239)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_devise_alert.html.erb (Duration: 0.2ms | Allocations: 91)
+Completed 200 OK in 18ms (Views: 16.8ms | ActiveRecord: 0.4ms | Allocations: 6187)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/ru" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by PageController#home as HTML
+  Parameters: {"region"=>"ru"}
+  Rendering page/home.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "students"[0m
+  Rendered page/home.html.erb within layouts/application (Duration: 2.1ms | Allocations: 266)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_devise_alert.html.erb (Duration: 0.2ms | Allocations: 91)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.7ms | Allocations: 5853)
+Started GET "/en" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by PageController#home as HTML
+  Parameters: {"region"=>"en"}
+  Rendering page/home.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "students"[0m
+  Rendered page/home.html.erb within layouts/application (Duration: 1.2ms | Allocations: 237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_devise_alert.html.erb (Duration: 0.2ms | Allocations: 91)
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.3ms | Allocations: 5824)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/ru/users/sign_in" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"region"=>"ru"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 10.0ms | Allocations: 5010)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_devise_alert.html.erb (Duration: 0.3ms | Allocations: 24)
+Completed 200 OK in 20ms (Views: 17.9ms | ActiveRecord: 0.4ms | Allocations: 11236)
+Started POST "/ru/users/sign_in" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"jane.hermiston@goodwin.net", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти", "region"=>"ru"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jane.hermiston@goodwin.net"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.4ms | Allocations: 704)
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"user"=>{"email"=>"jane.hermiston@goodwin.net", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти", "region"=>"ru"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.0ms | Allocations: 2871)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_devise_alert.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 30ms (Views: 27.2ms | ActiveRecord: 0.4ms | Allocations: 8422)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/ru/users/sign_in" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"region"=>"ru"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2890)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_devise_alert.html.erb (Duration: 0.1ms | Allocations: 22)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.4ms | Allocations: 8538)
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "noelia@walsh.biz"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "noelia@walsh.biz"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "Vy5PnG9c"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "bf_api_token", "confirmed_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "noelia@walsh.biz"], ["encrypted_password", "$2a$04$IcNnGIMoe2Z8QNqawdsAa.5YNEsWi8c3/JwVIW/n3mV6gLFNtBNFW"], ["created_at", "2020-02-22 20:22:17.248383"], ["updated_at", "2020-02-22 20:22:17.248383"], ["bf_api_token", "fUjz7LEdTWoSAo8XSp8bzyoEy"], ["confirmed_at", "2020-02-22 00:00:00"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/ru/users/sign_in" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"noelia@walsh.biz", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти", "region"=>"ru"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "noelia@walsh.biz"], ["LIMIT", 1]]
+Redirected to http://www.example.com/ru/account
+Completed 302 Found in 6ms (ActiveRecord: 0.3ms | Allocations: 2211)
+Started GET "/ru/account" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by PageController#account as HTML
+  Parameters: {"region"=>"ru"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering page/account.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "noelia@walsh.biz"], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["bf_api_token", "fUjz7LEdTWoSAo8XSp8bzyoEy"], ["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "bf_username" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["bf_username", "noelia"], ["updated_at", "2020-02-22 20:22:17.279378"], ["id", 6]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendered page/_documentation.html.erb (Duration: 0.8ms | Allocations: 569)
+  Rendered page/account.html.erb within layouts/application (Duration: 5.8ms | Allocations: 2248)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_devise_alert.html.erb (Duration: 0.1ms | Allocations: 28)
+Completed 200 OK in 14ms (Views: 10.6ms | ActiveRecord: 1.6ms | Allocations: 8286)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/ru/users/sign_in" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"region"=>"ru"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2899)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_devise_alert.html.erb (Duration: 0.1ms | Allocations: 24)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.4ms | Allocations: 8558)
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jackson.schoen@beer.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jackson.schoen@beer.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "XlGcXmSqApDb"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "bf_api_token", "is_admin", "confirmed_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "jackson.schoen@beer.name"], ["encrypted_password", "$2a$04$fGwIw.AvXW8kv27twRdDreveD6bvMqzbDKKERv6VNiuzjjQi6oXgq"], ["created_at", "2020-02-22 20:22:17.321131"], ["updated_at", "2020-02-22 20:22:17.321131"], ["bf_api_token", "4lJznwTg9YKUIXptWnAQaqFnX"], ["is_admin", true], ["confirmed_at", "2020-02-22 00:00:00"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/ru/users/sign_in" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"jackson.schoen@beer.name", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти", "region"=>"ru"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jackson.schoen@beer.name"], ["LIMIT", 1]]
+Redirected to http://www.example.com/ru/account
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms | Allocations: 991)
+Started GET "/ru/account" for 127.0.0.1 at 2020-02-22 23:22:17 +0300
+Processing by PageController#account as HTML
+  Parameters: {"region"=>"ru"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering page/account.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "jackson.schoen@beer.name"], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["bf_api_token", "4lJznwTg9YKUIXptWnAQaqFnX"], ["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "bf_username" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["bf_username", "jackson.schoen"], ["updated_at", "2020-02-22 20:22:17.346593"], ["id", 7]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendered page/_documentation.html.erb (Duration: 0.3ms | Allocations: 168)
+  Rendered page/account.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1306)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_devise_alert.html.erb (Duration: 0.1ms | Allocations: 26)
+Completed 200 OK in 13ms (Views: 9.9ms | ActiveRecord: 1.7ms | Allocations: 7241)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStudent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."id_stud" = $1 LIMIT $2[0m  [["id_stud", "AxQ4dHzU355cLl1"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.3ms)[0m  [1m[32mINSERT INTO "students" ("created_at", "updated_at", "first_name", "last_name", "id_stud") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2020-02-22 20:22:17.365646"], ["updated_at", "2020-02-22 20:22:17.365646"], ["first_name", "София"], ["last_name", "Гущина"], ["id_stud", "AxQ4dHzU355cLl1"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mStudent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."id_stud" = $1 LIMIT $2[0m  [["id_stud", "AxQ4dHzU355cLl1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "homer.walker@vandervortgislason.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "homer.walker@vandervortgislason.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "NoWtKvCoJvNaI"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "bf_api_token", "confirmed_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "homer.walker@vandervortgislason.com"], ["encrypted_password", "$2a$04$znVkz..qlos.qmf33ITnyedYYbog7ohtJZRF1P7yYEpiAgxELLc7y"], ["created_at", "2020-02-22 20:22:17.377177"], ["updated_at", "2020-02-22 20:22:17.377177"], ["bf_api_token", "AulAh7XYcz7INP5JuNoKg9SpS"], ["confirmed_at", "2020-02-22 00:00:00"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "homer.walker@vandervortgislason.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "homer.walker@vandervortgislason.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "X9pYb1Kr6GrPmU"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "yuriko@langworth.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "yuriko@langworth.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "Ey012MjS0jUzLwD1"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "bf_api_token", "confirmed_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "yuriko@langworth.org"], ["encrypted_password", "$2a$04$FbDRxLaH0g/Oeeu/I.5NAOZYTVv471Y5VSU4/pQ8e/WUNyauadqku"], ["created_at", "2020-02-22 20:22:17.392211"], ["updated_at", "2020-02-22 20:22:17.392211"], ["bf_api_token", "ddyZKjQHluXzMx4fyBlpu8VdA"], ["confirmed_at", "2020-02-22 00:00:00"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "yuriko@langworth.org"], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["bf_api_token", "3YvAqM1j5FdMh"], ["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "bf_api_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2020-02-22 20:22:17.396138"], ["bf_api_token", "3YvAqM1j5FdMh"], ["id", 9]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "cyril_reynolds@mayer.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "cyril_reynolds@mayer.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."bf_api_token" = $1 LIMIT $2[0m  [["bf_api_token", "3YvAqM1j5FdMh"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
