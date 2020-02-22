@@ -19,7 +19,7 @@
 
 /node_modules
 
-
+/.gitignore
 /config/master.key
 /.rspec
 *.log
