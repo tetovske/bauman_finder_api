@@ -69,7 +69,7 @@ module Parsers
           page = agn.get "#{key['home_u']}#{grp}"
           page.css(key['stud_c']).map { |std| yield parse_std(std, grp, page) }
         end
-        
+
         Success(data.flatten)
       end
 

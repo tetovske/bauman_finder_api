@@ -96,7 +96,7 @@ class Container
       Other::TokenGenerator
     end
 
-    register 'strategic_finder' do 
+    register 'strategic_finder' do
       Bf::SearchLogic::StrategicFinder
     end
 

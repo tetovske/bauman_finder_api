@@ -10,16 +10,16 @@
 <section class="hero is-light is-medium">
   <div class="hero-body">
     <div class="container">
-      <div class="title">Запросы с помощью функции <code>find</code></div>
+      <div class="title"><%= t "doc.v1.requests" %><code>find</code></div>
       <div class="container">
-        Данная функция поддерживает 6 аргументов для поиска: <code>name, last_name, mid_name, group, year_of_admission, exam_scores</code>
+        <%= t "doc.v1.description" %>: <code>name, last_name, mid_name, group, year_of_admission, exam_scores</code>
       </div>
-      <div class="subtitle">Пример</div>
+      <div class="subtitle"><%= t "doc.v1.example" %></div>
       <div class="container">
-        Запрос: <code>http://baumanfinder.ru/v1/find?APIKEY=PJxKcDY17dZQSyuqVp2OHO8zn&name=Тит</code>
+        <%= t "doc.v1.req" %>: <code>http://baumanfinder.ru/v1/find?APIKEY=PJxKcDY17dZQSyuqVp2OHO8zn&name=Тит</code>
       </div>
        <div class="container">
-        Формат ответа:</br><code>
+        <%= t "doc.v1.response_format" %>:</br><code>
           {</br>
             "status": "success",</br>
             "data": [</br>
@@ -78,7 +78,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        API V2 (JWT авторизация)
+        <%= t "doc.v2.main-title" %>
       </h1>
     </div>
   </div>
@@ -86,66 +86,11 @@
 <section class="hero is-light is-medium">
   <div class="hero-body">
     <div class="container">
-      <div class="title">Запросы с помощью функции <code>find</code></div>
       <div class="container">
-        Данная функция поддерживает 6 аргументов для поиска: <code>name, last_name, mid_name, group, year_of_admission, exam_scores</code>
+        <%= t "doc.v2.title" %><code>http://baumanfinder.ru/v2/auth</code>
       </div>
-      <div class="subtitle">Пример</div>
       <div class="container">
-        Запрос: <code>http://baumanfinder.ru/v1/find?APIKEY=PJxKcDY17dZQSyuqVp2OHO8zn&name=Тит</code>
-      </div>
-       <div class="container">
-        Формат ответа:</br><code>
-          {</br>
-            "status": "success",</br>
-            "data": [</br>
-            {</br>
-                "name": "Тит",</br>
-                "last_name": "Дасов",</br>
-                "mid_name": "Дмитриевич",</br>
-                "id_stud": "18У229",</br>
-                "id_abitur": "К0008",</br>
-                "form_of_study": null,</br>
-                "exam_scores": "230.0",</br>
-                "admitted_group": "ИУ6-33Б",</br>
-                "group": "ИУ6-33Б",</br>
-                "company": null,</br>
-                "subjects_data": {</br>
-                  "Элективный курс по физической культуре и спорту М": "54",</br>
-                  "Языки интернет-программирования М": "70",</br>
-                  "Теория вероятностей и математическая статистика  М": "49",</br>
-                  "Базы данных М": "71",</br>
-                  "Иностранный язык М": "90",</br>
-                  "Правоведение М": "76",</br>
-                  "Электротехника  М": "50",</br>
-                  "Физика М": "28",</br>
-                  "Теория вероятностей и математическая статистика  КМ": "83",</br>
-                  "Электротехника  КМ": "100",</br>
-                  "Базы данных КМ": "100",</br>
-                  "Языки интернет-программирования КМ": "100",</br>
-                  "Иностранный язык КМ": "100",</br>
-                  "Правоведение КМ": "100",</br>
-                  "Физика КМ": "100",</br>
-                  "Правоведение СЗ": "13",</br>
-                  "Языки интернет-программирования СЗ": "1",</br>
-                  "Элективный курс по физической культуре и спорту СЗ": "0",</br>
-                  "Физика СЗ": "6",</br>
-                  "Иностранный язык СЗ": "12",</br>
-                  "Электротехника  СЗ": "6",</br>
-                  "Базы данных СЗ": "0",</br>
-                  "Теория вероятностей и математическая статистика  СЗ": "14",</br>
-                  "Электротехника  ЛР": "4",</br>
-                  "Базы данных ЛР": "4",</br>
-                  "Языки интернет-программирования ЛР": "12",</br>
-                  "Физика ЛР": "4",</br>
-                  "Рейтинг по группе ": "9",</br>
-                  "Рейтинг по кафедре и специальности ": "29",</br>
-                  "Сумма модулей ": "488"</br>
-                }</br>
-              }</br>
-            ]</br>
-          }</br>
-        </code>
+        <%= t "doc.v2.after-title" %>
       </div>
     </div>
   </div>

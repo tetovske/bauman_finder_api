@@ -4,7 +4,7 @@
 class PageController < ApplicationController
   include PageHelper
   before_action :authenticate_user!, only: [:account]
-  
+
   def home; end
 
   def doc; end

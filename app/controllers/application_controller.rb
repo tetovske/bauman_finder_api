@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     # check for the class of the object to determine what type it is
     case resource.class.to_s
     when User.to_s
-      account_path  
+      account_path
     else
       home_path
     end
