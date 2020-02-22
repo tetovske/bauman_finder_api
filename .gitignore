@@ -19,4 +19,9 @@
 
 /node_modules
 
+
 /config/master.key
+/.rspec
+*.log
+/bf.code-workspace
+/babel.config.js
