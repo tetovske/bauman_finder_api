@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bf
   module SearchLogic
     class StrategicFinder < Service
@@ -43,12 +45,12 @@ module Bf
       end
 
       def search
-        raise NotImplementedError, "The class #{self.class} has not implemented #{__method__.to_s}"
+        raise NotImplementedError, "The class #{self.class} has not implemented #{__method__}"
       end
     end
 
     class FindByValue < Strategy
-      def initialize 
+      def initialize
         super
         @search_methods = {
           find: ->(data, args) { data.where(args) },

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bf
   class Finder < Service
     include Dry::Monads[:result, :do, :maybe, :try]
@@ -26,7 +28,7 @@ module Bf
     def find_by_strategy(search_function, search_args)
       inter_search = Student.all
       search_args.each do |key, value|
-        inter_search = yield sf.call(inter_search, key.to_sym, search_function.to_sym, { key => value })
+        inter_search = yield sf.call(inter_search, key.to_sym, search_function.to_sym, key => value)
       end
 
       Success(inter_search)

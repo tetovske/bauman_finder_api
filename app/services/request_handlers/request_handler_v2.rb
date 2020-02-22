@@ -13,18 +13,14 @@ module RequestHandlers
     def call(params = {})
       handle(params).bind do |data|
         Success(
-          {
-            status: :success,
-            data: data
-          }
+          status: :success,
+          data: data
         )
       end.or do |err|
         Success(
-          {
-            status: :failed,
-            cause: err,
-            data: []
-          }
+          status: :failed,
+          cause: err,
+          data: []
         )
       end
     end
@@ -48,7 +44,9 @@ module RequestHandlers
     end
 
     def validate_search_args(params)
-      return Failure(:invalid_args) unless params and params&.keys.all? { |k| keys['search_methods_args'].include?(k.to_s) }
+      unless params && params&.keys.all? { |k| keys['search_methods_args'].include?(k.to_s) }
+        return Failure(:invalid_args)
+      end
 
       Success()
     end

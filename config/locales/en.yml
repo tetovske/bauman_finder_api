@@ -45,3 +45,14 @@ en:
     create_new_token: "Refresh token"
     token_updated: "Token successfully updated!"
     tutorial_v1_title: "API V1"
+  doc:
+    v1:
+      requests: "Queries Using a Function"
+      description: "This function supports 6 arguments to search."
+      example: "Example"
+      req: "Request"
+      response_format: "Response format"
+    v2:
+      main-title: "API V2 (JWT authorization)"
+      title: "To get the token, you need to make a json request at:"
+      after-title: "As a result of this, you will receive a token that must be added to the header of each request. Further work is similar with version v1."
