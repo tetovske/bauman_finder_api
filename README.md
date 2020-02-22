@@ -72,7 +72,7 @@ http://baumanfinder.ru/find?APIKEY=ВашКлюч?name=Тит
 
 ## API V2 (JWT)
 
-Запрос на регистрацию
+Аутентификация
 
 ```json
 { 
@@ -88,27 +88,14 @@ http://baumanfinder.ru/find?APIKEY=ВашКлюч?name=Тит
 
 ```json
 {
-  "message": "user successfully registered!",
+  "message": "user successfully logged in!",
   "data": {
-    "username": "yay",
-    "token": "eyJ1c2VyX2VtYWlsIjoieWF5QGVtYWlsLmNvbSIsImV4cGlyZXMiOiIyMDE5LTEyLTMxIDA0OjUzOjU5ICswMzAwIn0.hx8zb8WF2x0v0Kdy3n2bPSZOgtqKxNbMHpjwxxWG1WY"
+    "token": "eyJ1c2VyX2VtYWlsIjoidGV0b3Zza2VAeWFuZGV4LnJ1IiwiZXhwaXJlcyI6IjIwMjAtMDItMjIgMjA6MzM6MzAgKzAzMDAifQ.hdoQp1083r6adIRzRSpm42FsB8TKkmdd9y67dYetMTQ"
   }
 }
 ```
 
 Используйте полученный токен в последующих запросах!
-
-## Авторизация
-
-```json
-{ 
-	"auth":
-	{
-		"email": "yay@email.com",
-		"password": "password"
-	}
-}
-```
 
 ### Поддерживаемые аргументы поиска:
 
