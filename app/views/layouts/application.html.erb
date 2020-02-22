@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BaumanFinder</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': false %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag "https://kit.fontawesome.com/802bb0066f.js", 'crossorigin': 'anonymous' %>
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <%= render 'layouts/devise_alert'  %>
+        <nav class="navbar header is-spaced" aria-label="main navigation" role="navigation">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item logo" href="/#{I18n.locale}">
+                        <p>BaumanFinder API</p>
+                    </a>
+                </div>
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item">
+                            <%= link_to t("home_page.doc"), doc_path %>
+                        </a>
+                        <% if user_signed_in? %>
+                            <a class="navbar-item">
+                                <%= link_to t("home_page.account"), account_path %>
+                            </a>
+                        <% end %>
+                        <% if user_signed_in? && current_user.is_admin %>
+                            <a class="navbar-item">
+                                <%= link_to t("home_page.admin"), admin_path %>
+                            </a>
+                        <% end %>
+                    </div>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <%= button_to "RU", "/ru", :method => :get, class: "navbar-item button is-light is-info is-rounded" %>
+                            <%= button_to "EN", "/en", :method => :get, class: "navbar-item button is-light is-danger is-rounded" %>
+                        </div>
+                    </div>
+                    <div class="navbar-end">
+                        <% if user_signed_in? %>
+                            <%= link_to account_username, account_path, class: "navbar-item" %>
+                        <% end %>
+                        <% unless current_user&.image_url.nil? %>
+                            <a class="image is-48x48">
+                                <%= image_tag current_user.image_url, class: "is-rounded" %>
+                            </a>
+                        <% end %>
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <% unless user_signed_in? %>
+                                    <%= button_to t("home_page.login"), new_user_session_path, method: :get, class: "button is-primary is-light" %>
+                                    <%= button_to t("home_page.signup"), new_user_registration_path, method: :get, class: "button is-link is-light" %>
+                                <% else %>
+                                    <%= button_to t("home_page.logout"), destroy_user_session_path, method: :delete, class: "button is-link is-light" %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <%= yield %>
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>
+                    <strong><%= t 'home_page.footer.work_info' %></strong>
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>
