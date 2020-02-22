@@ -1,1 +1,0 @@
-{"ast":null,"code":"alert('Hello World!');","map":{"version":3,"sources":["/home/tetovske/YAIP/bauman_finder_api/app/javascript/packs/notifications.js"],"names":["alert"],"mappings":"AAAAA,KAAK,CAAC,cAAD,CAAL","sourcesContent":["alert('Hello World!');"]},"metadata":{},"sourceType":"module"}
