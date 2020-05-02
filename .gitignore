@@ -12,10 +12,8 @@
 /db/*.sqlite3-*
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+/log
+/tmp
 
 /node_modules
 
@@ -24,3 +22,8 @@
 *.log
 /bf.code-workspace
 /babel.config.js
+
+# public folder with js code
+/public/packs-test
+/public/packs
+/public/assets
