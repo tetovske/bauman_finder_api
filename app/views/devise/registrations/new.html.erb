@@ -2,21 +2,23 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <h1 class="title"><%= t "home_page.login_form.search_example" %></h1>  
-        <div class="tile is-parent">
-          <article class="tile is-child notification is-success">
-            <% student = random_student(:with_subj_data) %>
-            <p class="title">
-              <%= student&.last_name %> <%= student&.first_name %> <%= student&.mid_name %>
-            </p>
-            <p class="subtitle">Обучается в группе: <%= student.group.name %></p>
-            <div class="content">
-              <% JSON.parse(student.subject_data).each do |key, value| %>
-                <div><%= key %>: <%= value %></div>
-              <% end %>
-            </div>
-          </article>
-        </div>
+        <% student = random_student(:with_subj_data) %>
+        <% unless student.nil? %>
+          <h1 class="title"><%= t "home_page.login_form.search_example" %></h1>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-success">
+              <p class="title">
+                <%= student&.last_name %> <%= student&.first_name %> <%= student&.mid_name %>
+              </p>
+              <p class="subtitle">Обучается в группе: <%= student&.group.name %></p>
+              <div class="content">
+                <% JSON.parse(student.subject_data).each do |key, value| %>
+                  <div><%= key %>: <%= value %></div>
+                <% end %>
+              </div>
+            </article>
+          </div>
+        <% end %>
       </div>
       <div class="column login-form">  
         <h1 class="title"><%= t "home_page.login_form.signup_title" %></h1>  

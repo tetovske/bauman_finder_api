@@ -1,5 +1,5 @@
 class AddDataToStudents < ActiveRecord::Migration[6.0]
-  def change
+  def up
     change_table :students do |t|
       t.references :group, foreign_key: { to_table: :groups }
       t.references :group_adm, foreign_key: { to_table: :groups }

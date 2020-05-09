@@ -1,5 +1,5 @@
 class RemoveGroupId < ActiveRecord::Migration[6.0]
-  def change
+  def up
     change_table :students do |t|
       t.remove :group_id
       t.belongs_to :group, foreign_key: true
