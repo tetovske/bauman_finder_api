@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get '/documentation' => 'page#doc', :as => 'doc'
     get '/account' => 'page#account', :as => 'account'
     get '/regenerate' => 'page#regenerate_token', :as => 'regenerate_token'
+    get '/quick_search' => 'page#quick_search', :as => 'quick_search'
 
     scope 'admin' do
       get '/' => 'admin#admin', :as => 'admin'

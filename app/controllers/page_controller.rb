@@ -16,4 +16,8 @@ class PageController < ApplicationController
     current_user&.save
     respond_to :js
   end
+
+  def quick_search
+    @students = Parsers::WebParser::WebScraping.call
+  end
 end

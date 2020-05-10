@@ -2,10 +2,10 @@
 
 # Student model
 class Student < ApplicationRecord
-  belongs_to :company
-  belongs_to :group_adm, class_name: 'Group', foreign_key: 'group_adm_id'
-  belongs_to :form_of_study
-  belongs_to :degree
+  belongs_to :company, optional: true
+  belongs_to :group_adm, class_name: 'Group', foreign_key: 'group_adm_id', optional: true
+  belongs_to :form_of_study, optional: true
+  belongs_to :degree, optional: true
   has_many :student_semesters
   has_many :student_session_grades
   has_many :student_subject_grades

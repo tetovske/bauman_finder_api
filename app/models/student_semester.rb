@@ -1,6 +1,7 @@
 class StudentSemester < ApplicationRecord
-  belongs_to :student
-  belongs_to :group
-  belongs_to :degree
-  belongs_to :semester_year
+  belongs_to :student, optional: true
+  belongs_to :group, optional: true
+  belongs_to :degree, optional: true
+  belongs_to :semester_year, optional: true
+  belongs_to :year, optional: true
 end
