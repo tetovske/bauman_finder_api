@@ -18,6 +18,6 @@ class PageController < ApplicationController
   end
 
   def quick_search
-    @students = Parsers::WebParser::WebScraping.call
+    @student_list = Student.paginate(page: params[:page], per_page: 30)
   end
 end

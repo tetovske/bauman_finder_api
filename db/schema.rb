@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_203620) do
   end
 
   create_table "grade_types", force: :cascade do |t|
-    t.string "type", limit: 5
+    t.string "grade_type", limit: 20
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -78,7 +78,9 @@ ActiveRecord::Schema.define(version: 2020_05_08_203620) do
 
   create_table "semester_years", force: :cascade do |t|
     t.bigint "year_id"
-    t.string "title", limit: 20
+    t.string "semester_title", limit: 20
+    t.string "session_title", limit: 20
+    t.integer "session_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["year_id"], name: "index_semester_years_on_year_id"
@@ -100,25 +102,25 @@ ActiveRecord::Schema.define(version: 2020_05_08_203620) do
   end
 
   create_table "student_session_grades", force: :cascade do |t|
-    t.bigint "student_id"
+    t.bigint "student_semester_id"
     t.bigint "subject_id"
     t.bigint "exam_grade_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["exam_grade_id"], name: "index_student_session_grades_on_exam_grade_id"
-    t.index ["student_id"], name: "index_student_session_grades_on_student_id"
+    t.index ["student_semester_id"], name: "index_student_session_grades_on_student_semester_id"
     t.index ["subject_id"], name: "index_student_session_grades_on_subject_id"
   end
 
   create_table "student_subject_grades", force: :cascade do |t|
-    t.bigint "student_id"
+    t.bigint "student_semester_id"
     t.bigint "subject_id"
     t.bigint "grade_type_id"
     t.integer "points"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["grade_type_id"], name: "index_student_subject_grades_on_grade_type_id"
-    t.index ["student_id"], name: "index_student_subject_grades_on_student_id"
+    t.index ["student_semester_id"], name: "index_student_subject_grades_on_student_semester_id"
     t.index ["subject_id"], name: "index_student_subject_grades_on_subject_id"
   end
 
@@ -188,10 +190,10 @@ ActiveRecord::Schema.define(version: 2020_05_08_203620) do
   add_foreign_key "student_semesters", "students"
   add_foreign_key "student_semesters", "years", column: "admission_year_id"
   add_foreign_key "student_session_grades", "exam_grades"
-  add_foreign_key "student_session_grades", "students"
+  add_foreign_key "student_session_grades", "student_semesters"
   add_foreign_key "student_session_grades", "subjects"
   add_foreign_key "student_subject_grades", "grade_types"
-  add_foreign_key "student_subject_grades", "students"
+  add_foreign_key "student_subject_grades", "student_semesters"
   add_foreign_key "student_subject_grades", "subjects"
   add_foreign_key "students", "companies"
   add_foreign_key "students", "degrees"

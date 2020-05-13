@@ -2,10 +2,17 @@ decree_parser:
   doc_parser_config: '/config/doc_parser_config.yaml'
   decrees_docs_path: '/storage/data/decrees'
 web:
-  module:
+  parser:
+    min_year: 2018
     max_year: 2019
+    exam_min_index: 28
     exam_max_index: 28
     exam_fac_list: '#session-structure > li'
+    exam_stud_name: '> td:nth-child(2) > div:nth-child(2) > span:nth-child(1)'
+    exam_stud_id: '> td:nth-child(3) > span:nth-child(2)'
+    student_exam_list: '.eu-table > tbody> tr'
+    student_exam_subj_grades: '> td'
+    exam_subj_list: '.eu-table > thead:nth-child(2) > tr:nth-child(1) > th'
     subj: 'html body div#layout div#workarea div#canvas div#right-column div#content div.outerdiv div.innerdiv table.standart_table.progress_students.vertical_hover.table-group thead tr th'
     webvpn_main: 'https://webvpn.bmstu.ru'
     webvpn_sem_main: 'https://webvpn.bmstu.ru/+CSCO+1h75676763663A2F2F72682E6F7A6667682E6568++/modules/progress3/'

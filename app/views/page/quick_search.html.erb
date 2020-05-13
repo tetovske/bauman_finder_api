@@ -1,5 +1,43 @@
-<% unless @students.nil? %>
-  <%= @students %>
-<% else %>
-  <p>Спарсить не удалось</p>
-<% end %>
+<div id="wrapper">
+  <div class="animated-background">
+    <section class="section">
+      <div class="container has-text-centered main-page-content">
+        <div class="tile is-parent is-warning">
+          <article class="tile is-child box">
+            <p class="title">Хочешь воспользоваться эти API?</p>
+            <p class="subtitle">What is up?</p>
+          </article>
+        </div>
+        <table class="table is-center is-fullwidth is-striped">
+          <thead>
+          <tr>
+            <th>ID студента</th>
+            <th>ФИО</th>
+            <th>ID абитуриента</th>
+            <th>Баллы ЕГЭ</th>
+            <th>Форма обучения</th>
+            <th>Поступил(-a) в группу</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% unless @student_list.nil? %>
+            <% @student_list.each do |student| %>
+              <tr>
+                <th><%= student.id_stud %></th>
+                <td><%= link_to student.gets_initials, home_path %></td>
+                <th><%= student.id_abitur ? student.id_abitur : "-" %></th>
+                <td><%= student.group_adm ? student.group_adm&.name : "-" %></td>
+                <td><%= student.tr_form_of_study ? student.tr_form_of_study : "-" %></td>
+                <td><%= student.exam_scores ? student.exam_scores.to_i : "-" %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <p>База данных пуста</p>
+          <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @student_list %>
+      </div>
+    </section>
+  </div>
+</div>

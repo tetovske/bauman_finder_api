@@ -14,12 +14,13 @@ class SetupFullDb < ActiveRecord::Migration[6.0]
 
         create_table :semester_years do |t|
           t.references :year, foreign_key: true
-          t.string :title, limit: 20
+          t.string :semester_title, :session_title, limit: 20
+          t.integer :session_id
           t.timestamps
         end
 
         create_table :grade_types do |t|
-          t.string :type, limit: 5
+          t.string :grade_type, limit: 20
           t.timestamps
         end
 
@@ -33,21 +34,21 @@ class SetupFullDb < ActiveRecord::Migration[6.0]
           t.timestamps
         end
 
+        create_table :student_semesters do |t|
+          t.references :student, :group, :semester_year, foreign_key: true
+          t.references :admission_year, foreign_key: { to_table: :years }
+          t.references :current_degree, foreign_key: { to_table: :degrees }
+          t.timestamps
+        end
+
         create_table :student_subject_grades do |t|
-          t.references :student, :subject, :grade_type, foreign_key: true
+          t.references :student_semester, :subject, :grade_type, foreign_key: true
           t.integer :points
           t.timestamps
         end
 
         create_table :student_session_grades do |t|
-          t.references :student, :subject, :exam_grade, foreign_key: true
-          t.timestamps
-        end
-
-        create_table :student_semesters do |t|
-          t.references :student, :group, :semester_year, foreign_key: true
-          t.references :admission_year, foreign_key: { to_table: :years }
-          t.references :current_degree, foreign_key: { to_table: :degrees }
+          t.references :student_semester, :subject, :exam_grade, foreign_key: true
           t.timestamps
         end
 
@@ -88,9 +89,9 @@ class SetupFullDb < ActiveRecord::Migration[6.0]
           t.remove :abbr
         end
 
-        drop_table :student_semesters
         drop_table :student_subject_grades
         drop_table :student_session_grades
+        drop_table :student_semesters
         drop_table :semester_years
         drop_table :grade_types
         drop_table :subjects

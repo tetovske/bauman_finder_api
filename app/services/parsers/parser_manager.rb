@@ -22,7 +22,7 @@ module Parsers
     def update_webvpn_data
       data = yield scraper.call
       data_validator.call(data, :web_data)
-      puts "DATA UPDATED"
+      puts "succeeded!"
     end
   end
 end

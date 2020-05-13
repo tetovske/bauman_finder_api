@@ -27,29 +27,16 @@ module Parsers
 
     def update_by_decrees(data)
       data.each do |stud|
-        record = student.new(
+        student = Student.find_or_create_by(id_stud: stud[:id_stud])
+        student.update(
           first_name: stud[:first_name],
           last_name: stud[:last_name],
           mid_name: stud[:mid_name],
-          id_stud: stud[:id_stud],
           id_abitur: stud[:id_abitur],
           exam_scores: stud[:exam_scores].to_i,
-          form_of_study: study_f.find_by(title: stud[:form_of_study]),
-          group_adm: group.find_by(name: stud[:group_adm])
+          form_of_study: FormOfStudy.find_by(title: stud[:form_of_study]),
+          group_adm: Group.find_or_create_by(name: stud[:group_adm])
         )
-        if record.valid?
-          record.save
-        else
-          upd = student.find_by(id_stud: stud[:id_stud])
-          upd&.update(
-            first_name: stud[:first_name],
-            last_name: stud[:last_name],
-            mid_name: stud[:mid_name],
-            exam_scores: stud[:exam_scores].to_i,
-            form_of_study: study_f.find_by(title: stud[:form_of_study]),
-            group_adm: group.find_by(name: stud[:group_adm])
-          )
-        end
       end
     end
 
@@ -61,25 +48,41 @@ module Parsers
     end
 
     def update_webvpn_data(data)
-      data.each do |rec|
-        record = student.new(
-          first_name: rec[:first_name],
-          last_name: rec[:last_name],
-          mid_name: rec[:mid_name],
-          id_stud: rec[:id_stud],
-          group: detect_group(rec[:group]),
-          subject_data: rec[:subject_data].to_json
-        )
-        if record.valid?
-          record.save
-        else
-          stud = student.find_by(id_stud: rec[:id_stud])
-          unless stud.nil?
-            student.update(
-              stud.id,
-              subject_data: rec[:subject_data].to_json,
-              group: detect_group(rec[:group])
-            )
+      data.each do |data_type, data|
+        data.each do |module_id, faculties|
+          faculties.each do |faculty_name, departments|
+            departments.each do |department_name, groups|
+              groups.each do |group_name, students|
+                students.each do |student|
+                  stud_db = Student.find_or_create_by(
+                    first_name: student[:first_name],
+                    last_name: student[:last_name],
+                    mid_name: student[:mid_name],
+                    id_stud: student[:id_stud]
+                  )
+                  search_sem = data_type.eql?(:modules) ? { semester_title: module_id } : {session_id: module_id}
+                  stud_sem = StudentSemester.find_or_create_by(
+                    student: Student.find_or_create_by(id_stud: student[:id_stud]),
+                    group: Group.find_or_create_by(name: group_name),
+                    semester_year: SemesterYear.find_or_create_by(search_sem)
+                  )
+                  student[:subject_data].each do |grade_type, subjects|
+                    subjects.each do |subj_name, grade|
+                      subj = Subject.find_or_create_by(name: subj_name)
+                      if data_type.eql?(:modules)
+                        subj_grade = StudentSubjectGrade.find_or_create_by(
+                          student_semester: stud_sem, subject: subj,
+                          grade_type: GradeType.find_or_create_by(grade_type: grade_type))
+                        subj_grade.update(points: grade.to_i)
+                      elsif data_type.eql?(:exams)
+                        sess = StudentSessionGrade.find_or_create_by(student_semester: stud_sem, subject: subj)
+                        sess.update(exam_grade: ExamGrade.find_or_create_by(grade: grade))
+                      end
+                    end
+                  end
+                end
+              end
+            end
           end
         end
       end
