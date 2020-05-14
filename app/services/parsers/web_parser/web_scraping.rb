@@ -60,14 +60,14 @@ module Parsers
       def parse_modules(main_page)
         k = key['parser']
         sems = k['min_year'].upto(k['max_year']).map { |n| %W[#{n}-01/ #{n}-02/] }.flatten
-        data = sems.take(1).map do |sem|
+        data = sems.take(2).map do |sem|
           main_page.links[MODULES_BUTTON_ID].click
           pg = agent.get("#{k['webvpn_sem_main']}#{sem}")
           faculties = pg.at(k['fac_list_x']).css(k['fac_list_sel'])&.take(7).drop(6).map do |fac_page|
-            fac = fac_page.css('> span')&.first&.content
+            fac = fac_page.css('> span')&.first&.content.match(/[^\s]+/).to_s
             departs = fac_page.css('> .eu-tree-nodeset')&.first&.css('> li')&.take(6)&.drop(5)&.map do |dep|
-              depart = dep.css('> span').first.content
-              groups = dep.css('> .eu-tree-nodeset')&.first&.css('> li')&.drop(1).take(20).drop(17).map do |grp|
+              depart = dep.css('> span').first.content.match(/[^\s]+/).to_s
+              groups = dep.css('> .eu-tree-nodeset')&.first&.css('> li')&.drop(1).take(17).drop(11).map do |grp|
                 group = grp.css('a')&.first&.content
                 grp_url = grp.css('a')&.first&.values&.first
                 page = agent.get("#{k['webvpn_main']}#{grp_url}")
@@ -91,11 +91,11 @@ module Parsers
         sessions = k['exam_min_index'].upto(k['exam_max_index']).map { |n| { n => "/?session_id=#{n}" } }
         sessions_per_index = sessions.map do |sess|
           page = agent.get("#{k['webvpn_ex_main']}#{sess.values.first}")
-          faculties_per_session = page.css(k['exam_fac_list']).take(6).drop(5).map do |faculty|
+          faculties_per_session = page.css(k['exam_fac_list']).take(20).drop(19).map do |faculty|
             faculty_name = faculty.css('> span > span > b').first.content
-            departments_per_faculty = faculty.css('> ul > li').take(6).drop(5).map do |dep|
-              dep_name = dep.css('> span > span').first.content
-              groups = dep.css('> ul > li').take(20).drop(17).map do |group_li|
+            departments_per_faculty = faculty.css('> ul > li').take(8).drop(7).map do |dep|
+              dep_name = dep.css('> span > span').first.content.match(/[^\s]+/).to_s
+              groups = dep.css('> ul > li').take(7).drop(1).map do |group_li|
                 group_name = group_li.css('> i > a').first.content
                 grp_url = group_li.css('> i > a').first.values.last
                 group_session_page = agent.get("#{k['webvpn_main']}#{grp_url}")
@@ -167,7 +167,7 @@ module Parsers
             "Рейтинг по кафедре и специальности" => :flow_rating,
             "Сумма модулей" => :modules_sum
         }
-        subj_info[:rating_data] = subj_info[:rating_data].transform_keys(&ratings_hash.method(:[]))
+        # subj_info[:rating_data] = subj_info[:rating_data].transform_keys(&ratings_hash.method(:[]))
         return Failure(:parse_error) if [ini, stud_id, group.first, subj_info].any?(nil)
 
         Success(generate_record(ini, stud_id, group, subj_info))

@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_203620) do
 
   create_table "departments", force: :cascade do |t|
     t.bigint "faculty_id"
-    t.string "name", limit: 30
+    t.string "name", limit: 200
     t.string "abbr", limit: 5
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_203620) do
   end
 
   create_table "faculties", force: :cascade do |t|
-    t.string "name", limit: 30
+    t.string "name", limit: 200
     t.string "abbr", limit: 5
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 2020_05_08_203620) do
 
   create_table "semester_years", force: :cascade do |t|
     t.bigint "year_id"
-    t.string "semester_title", limit: 20
-    t.string "session_title", limit: 20
+    t.string "semester_title", limit: 70
+    t.string "session_title", limit: 70
     t.integer "session_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_203620) do
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string "name", limit: 50
+    t.string "name", limit: 200
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -4,8 +4,9 @@
       <div class="container has-text-centered main-page-content">
         <div class="tile is-parent is-warning">
           <article class="tile is-child box">
-            <p class="title">Хочешь воспользоваться эти API?</p>
-            <p class="subtitle">What is up?</p>
+            <p class="title">Здесь могла быть ваша реклама</p>
+            <p class="subtitle">Ахахахаха</p>
+            <p class="subtitle">текст</p>
           </article>
         </div>
         <table class="table is-center is-fullwidth is-striped">
@@ -26,9 +27,9 @@
                 <th><%= student.id_stud %></th>
                 <td><%= link_to student.gets_initials, home_path %></td>
                 <th><%= student.id_abitur ? student.id_abitur : "-" %></th>
-                <td><%= student.group_adm ? student.group_adm&.name : "-" %></td>
-                <td><%= student.tr_form_of_study ? student.tr_form_of_study : "-" %></td>
                 <td><%= student.exam_scores ? student.exam_scores.to_i : "-" %></td>
+                <td><%= student.tr_form_of_study ? student.tr_form_of_study : "-" %></td>
+                <td><%= student.group_adm ? student.group_adm&.name : "-" %></td>
               </tr>
             <% end %>
           <% else %>

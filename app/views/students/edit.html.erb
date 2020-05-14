@@ -1,0 +1,14 @@
+<div id="wrapper">
+  <div class="animated-background">
+    <section class="section">
+      <div class="container main-page-content">
+        <h1>Editing Student</h1>
+
+        <%= render 'form', student: @student %>
+
+        <%= link_to 'Show', @student %> |
+        <%= link_to 'Back', students_path %>
+      </div>
+    </section>
+  </div>
+</div>

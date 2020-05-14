@@ -34,9 +34,21 @@ module Parsers
           mid_name: stud[:mid_name],
           id_abitur: stud[:id_abitur],
           exam_scores: stud[:exam_scores].to_i,
-          form_of_study: FormOfStudy.find_by(title: stud[:form_of_study]),
+          form_of_study: FormOfStudy.find_or_create_by(
+              title: convert_form_of_study(stud[:form_of_study])),
           group_adm: Group.find_or_create_by(name: stud[:group_adm])
         )
+      end
+    end
+
+    def convert_form_of_study(name)
+      case name
+      when "budget"
+        "Бюджет"
+      when "paid"
+        "Платная"
+      when "contract"
+        "Целевая"
       end
     end
 
@@ -51,6 +63,12 @@ module Parsers
       data.each do |data_type, data|
         data.each do |module_id, faculties|
           faculties.each do |faculty_name, departments|
+            fac = Faculty.find_or_create_by(name: faculty_name)
+            departments.keys.each do |dep|
+              unless Department.exists?(name: dep)
+                dep_rec = Department.create(name: dep, faculty: fac)
+              end
+            end
             departments.each do |department_name, groups|
               groups.each do |group_name, students|
                 students.each do |student|

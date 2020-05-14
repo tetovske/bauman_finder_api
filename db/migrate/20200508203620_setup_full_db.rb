@@ -14,7 +14,7 @@ class SetupFullDb < ActiveRecord::Migration[6.0]
 
         create_table :semester_years do |t|
           t.references :year, foreign_key: true
-          t.string :semester_title, :session_title, limit: 20
+          t.string :semester_title, :session_title, limit: 70
           t.integer :session_id
           t.timestamps
         end
@@ -25,7 +25,7 @@ class SetupFullDb < ActiveRecord::Migration[6.0]
         end
 
         create_table :subjects do |t|
-          t.string :name, limit: 50
+          t.string :name, limit: 200
           t.timestamps
         end
 
@@ -53,14 +53,14 @@ class SetupFullDb < ActiveRecord::Migration[6.0]
         end
 
         create_table :faculties do |t|
-          t.string :name, limit: 30
+          t.string :name, limit: 200
           t.string :abbr, limit: 5
           t.timestamps
         end
 
         create_table :departments do |t|
           t.references :faculty, foreign_key: true
-          t.string :name, limit: 30
+          t.string :name, limit: 200
           t.string :abbr, limit: 5
           t.timestamps
         end

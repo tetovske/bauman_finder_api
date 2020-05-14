@@ -11,20 +11,14 @@ class Student < ApplicationRecord
   validates :first_name, :last_name, :id_stud, presence: true
   validates :id_stud, uniqueness: true
 
+  default_scope { order(exam_scores: :desc) }
+
   def gets_initials
     "#{last_name} #{first_name} #{mid_name}"
   end
 
-  def tr_form_of_study
-    puts "TEST" + form_of_study&.title
-    case form_of_study&.title
-    when "paid"
-      "Платная"
-    when "budget"
-      "Бюджет"
-    when "contract"
-      "Целевая"
-    end
+  def gets_faculty
+    group_adm.department.faculty
   end
 end
 

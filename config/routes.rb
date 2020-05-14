@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     root 'page#home', :as => 'home'
     devise_for :users, skip: :omniauth_callbacks, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+    resources :students
+
     get 'test/output', :as => 'output'
     get '/documentation' => 'page#doc', :as => 'doc'
     get '/account' => 'page#account', :as => 'account'

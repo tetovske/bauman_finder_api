@@ -59,10 +59,6 @@ gem 'dry-transaction'
 gem 'dry-container'
 gem 'dry-auto_inject'
 
-# slim
-gem 'slim-rails'
-gem 'haml'
-
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
