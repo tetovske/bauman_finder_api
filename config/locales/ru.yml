@@ -16,7 +16,7 @@ ru:
       main_txt: 'Найдутся все!'
       after_main_txt: 'И даже отчисленные'
     footer:
-      work_info: 'Зачетная работа'
+      work_info: 'Курсовая работа по БД'
     login_form:
       login: "Войти"
       email: "Ваш email"

@@ -109,3 +109,13 @@ input[type="submit"].sign-in-with {
     border-radius: 15px;
     border: 1px solid rgb(235, 235, 235);
 }
+
+.student-row {
+  transform: scale(1);
+  transition: .2s;
+}
+
+.student-row:hover {
+    transform: scale(1.02);
+    transition: .2s;
+}

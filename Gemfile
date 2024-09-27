@@ -20,6 +20,7 @@ gem 'sass-rails', '~> 5'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'sprockets', '~> 3'
+gem 'will_paginate', '~> 3.1.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -57,10 +58,6 @@ gem 'dry-monads'
 gem 'dry-transaction'
 gem 'dry-container'
 gem 'dry-auto_inject'
-
-# slim
-gem 'slim-rails'
-gem 'haml'
 
 gem 'devise'
 gem 'omniauth'

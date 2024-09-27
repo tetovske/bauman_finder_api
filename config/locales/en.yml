@@ -16,7 +16,7 @@ en:
       main_txt: 'There are all!'
       after_main_txt: 'And even expelled'
     footer:
-      work_info: 'Zachyotnaya rabota by tetovske'
+      work_info: 'Kursach DB'
     login_form:
       login: "Login"
       email: "Email"

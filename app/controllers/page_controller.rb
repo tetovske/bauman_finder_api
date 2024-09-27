@@ -16,4 +16,8 @@ class PageController < ApplicationController
     current_user&.save
     respond_to :js
   end
+
+  def quick_search
+    @student_list = Student.paginate(page: params[:page], per_page: 30)
+  end
 end

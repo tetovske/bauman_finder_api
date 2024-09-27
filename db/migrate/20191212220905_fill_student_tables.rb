@@ -3,7 +3,7 @@
 # Migration for students table
 class FillStudentTables < ActiveRecord::Migration[6.0]
   def change
-    change_table :students do |t|
+    create_table :students do |t|
       t.column :first_name, :string
       t.column :last_name, :string
       t.column :mid_name, :string
@@ -12,7 +12,7 @@ class FillStudentTables < ActiveRecord::Migration[6.0]
       t.column :id_stud, :string
       t.column :id_abitur, :string
       t.column :exam_scores, :decimal
-      t.remove :identifier
+      t.timestamps
     end
   end
 end

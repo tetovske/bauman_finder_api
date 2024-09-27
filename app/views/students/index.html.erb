@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<div id="wrapper">
+  <div class="animated-background">
+    <section class="section">
+      <div class="container has-text-centered main-page-content">
+        <div class="tile is-parent is-warning">
+          <article class="tile is-child box">
+            <p class="title">Здесь могла быть ваша реклама</p>
+            <p class="subtitle">Ахахахаха</p>
+            <p class="subtitle">текст</p>
+          </article>
+        </div>
+        <%= form_tag(students_path, :method => "get") do %>
+          <%= label_tag "Инициалы" %>
+          <%= text_field_tag :initials, "" %>
+          <%= submit_tag("Найти", :class => 'button-def', :id => 'submit-button') %>
+        <% end %>
+        <% unless @students.empty? %>
+          <table class="table is-center is-fullwidth is-striped">
+            <thead>
+            <tr>
+              <th>ID студента</th>
+              <th>ФИО</th>
+              <th>ID абитуриента</th>
+              <th>Баллы ЕГЭ</th>
+              <th>Форма обучения</th>
+              <th>Поступил(-a) в группу</th>
+              <th colspan="3">Администрирование</th>
+            </tr>
+            </thead>
+            <tbody>
+              <% @students.each do |student| %>
+                <tr class="student-row">
+                  <td><%= student.id_stud %></td>
+                  <td><%= link_to student.gets_initials, home_path %></td>
+                  <td><%= student.id_abitur ? student.id_abitur : "-" %></td>
+                  <td><%= student.exam_scores ? student.exam_scores.to_i : "-" %></td>
+                  <td><%= student.form_of_study ? student.form_of_study.title : "-" %></td>
+                  <td><%= student.group_adm ? student.group_adm&.name : "-" %></td>
+                  <td>
+                    <%= button_to edit_student_path(student.id), method: :get, class: "button is-warning" do %>
+                      <span class="icon is-small">
+                        <i class="fas fa-user-edit"></i>
+                      </span>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= button_to student_path(student.id), method: :get, class: "button is-success" do %>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-double-right"></i>
+                      </span>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p>База данных пуста</p>
+        <% end %>
+        <%= will_paginate @student_list %>
+      </div>
+    </section>
+  </div>
+</div>
+
+<%= link_to 'New Student', new_student_path %>

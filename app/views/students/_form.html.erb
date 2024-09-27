@@ -1,0 +1,38 @@
+<%= form_with(model: student, method: :get, local: true) do |form| %>
+  <%# if student.errors.any? %>
+<!--      <div id="error_explanation">-->
+<!--        <h2><%#= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>-->
+
+<!--        <ul>-->
+  <%# student.errors.full_messages.each do |message| %>
+<!--            <li><%#= message %></li>-->
+  <%# end %>
+<!--        </ul>-->
+<!--      </div>-->
+  <%# end %>
+  <%= form.label "Имя" %>
+  <div class="control">
+    <%= form.text_field :first_name %>
+  </div>
+
+  <%= form.label "Фамилия" %>
+  <div class="control">
+    <%= form.text_field :last_name %>
+  </div>
+
+  <%= form.label "Отчество" %>
+  <div class="control">
+    <%= form.text_field :mid_name %></br>
+  </div>
+
+  <%= form.label "ID студента" %>
+  <div class="control">
+    <%= form.text_field :id_stud %>
+  </div>
+  <div class="control">
+    <%= form.select :form_of_study, options_for_select(FormOfStudy.all.map(&:title)) %>
+  </div>
+  <div class="control">
+    <%= form.submit 'Изменить', class: "button is-primary" %>
+  </div>
+<% end %>

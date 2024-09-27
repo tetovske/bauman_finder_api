@@ -13,15 +13,6 @@ default: &default
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: bf_db
-  host: localhost
-  pool: 5
-  username: bf_user
-  password: 4525
-
 production:
   adapter: postgresql
   encoding: unicode
@@ -29,7 +20,16 @@ production:
   host: localhost
   pool: 5
   username: bf_user
-  password: 4525
+  password: 7898
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: bf_db_dev
+  host: localhost
+  pool: 5
+  username: bf_user_dev
+  password: 1234
 
 test:
   adapter: postgresql
@@ -37,5 +37,5 @@ test:
   database: bf_db_test
   host: localhost
   pool: 5
-  username: bf_user
-  password: 4525
+  username: bf_user_test
+  password: 1234

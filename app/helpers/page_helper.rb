@@ -15,11 +15,6 @@ module PageHelper
   end
 
   def random_student(mode = :all)
-    case mode
-    when :with_subj_data
-      Student.all.reject { |s| s.subject_data.blank? }.sample
-    else
-      Student.all.sample
-    end
+    Student.where.not(id_abitur: nil).to_a.sample
   end
 end

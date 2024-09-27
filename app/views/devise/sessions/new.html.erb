@@ -2,18 +2,18 @@
   <div class="container">
     <div class="columns">
       <div class="column">
+        <h1 class="title"><%= t "home_page.login_form.search_example" %></h1>
         <div class="tile is-parent">
           <article class="tile is-child notification is-danger">
             <% student = random_student(:with_subj_data) %>
             <p class="title">
               <%= student&.last_name %> <%= student&.first_name %> <%= student&.mid_name %>
             </p>
-            <p class="subtitle">Обучается в группе: <%= student&.group&.name %></p>
-            <div class="content">
-              <% JSON.parse(student&.subject_data).each do |key, value| %>
-                <div><%= key %>: <%= value %></div>
-              <% end unless student&.subject_data.nil? %>
-            </div>
+            <p class="subtitle">Поступил в группу: <%= student&.group_adm&.name %></p>
+            <p class="subtitle">ID студента: <%= student&.id_stud %></p>
+            <p class="subtitle">ID абитуриента: <%= student&.id_abitur %></p>
+            <p class="subtitle">Баллы ЕГЭ: <%= student&.exam_scores.to_i %></p>
+            <p class="subtitle">Форма обучения: <%= student&.form_of_study&.title %></p>
           </article>
         </div>
       </div>

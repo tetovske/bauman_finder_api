@@ -1,0 +1,158 @@
+<p id="notice"><%= notice %></p>
+
+<% unless @student.nil? %>
+  <section class="hero is-fullwidth is-info">
+    <div class="hero-body is-fullwidth">
+      <div class="container is-fullwidth">
+        <h1 class="title">
+          <%= @student.gets_initials %>
+        </h1>
+        <% unless @student.group_adm.nil? %>
+          <h2 class="subtitle ">
+            <p>Поступил в группу: </p>
+            <%= @student.group_adm.name %>
+          </h2>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <div id="wrapper">
+    <div class="animated-background">
+      <section class="section">
+        <div class="container main-page-content">
+          <table class="table is-center is-striped">
+            <tbody>
+              <tr class="student-row">
+                <th>ID студента</th>
+                <td><%= nully(@student.id_stud) %></td>
+              </tr>
+              <tr class="student-row">
+                <th>ID абитуриента</th>
+                <td><%= nully(@student.id_abitur) %></td>
+              </tr>
+              <tr class="student-row">
+                <th>Поступил(-а) в группу</th>
+                <td><%= nully(@student.group_adm&.name) %></td>
+              </tr>
+              <tr class="student-row">
+                <th>Баллы ЕГЭ</th>
+                <td><%= nully(@student.exam_scores) %></td>
+              </tr>
+              <tr class="student-row">
+                <th>Форма обучения</th>
+                <td><%= nully(@student.form_of_study&.title) %></td>
+              </tr>
+            </tbody>
+          </table>
+          <% exam = exam_data_for_student(@student) %>
+          <% unless exam.nil? and exam.empty? %>
+            <% exam.each_slice(2) do |exam_data1, exam_data2| %>
+              <div class="container">
+                <div class="notification has-text-centered">
+                  <strong>Экзамены</strong>
+                </div>
+              </div>
+              <div class="columns is-fullwidth">
+                <div class="column">
+                  <table class="table is-center is-striped">
+                    <thead>
+                      <tr class="student-row">
+                        <th colspan="2">Семестр: <%= exam_data1.first.delete_suffix('/')  %></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% exam_data1.last.each do |exam| %>
+                        <tr class="student-row">
+                          <th><%= nully(exam.subj_name) %></th>
+                          <td><%= nully(exam.grade) %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="column">
+                  <table class="table is-center is-striped">
+                    <thead>
+                      <tr class="student-row">
+                        <th colspan="2">Семестр: <%= exam_data2&.first&.delete_suffix('/')  %></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% exam_data2&.last&.each do |exam| %>
+                      <tr class="student-row">
+                        <th><%= nully(exam&.subj_name) %></th>
+                        <td><%= nully(exam&.grade) %></td>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <% semesters_data = semester_data_for_student(@student) %>
+          <% unless semesters_data.nil? %>
+            <% semesters_data.each_slice(2) do |sem1, sem2| %>
+              <div class="container">
+                <div class="notification has-text-centered">
+                  <strong>Успеваемость</strong>
+                </div>
+              </div>
+              <div class="columns is-fullwidth">
+                <div class="column">
+                  <table class="table is-center is-striped">
+                    <thead>
+                    <tr class="student-row">
+                      <th colspan="2">Семестр: <%= sem1.first.delete_suffix('/')  %></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% sem1.last.each do |subj| %>
+                      <tr class="student-row">
+                        <th><%= nully(subj.subj_name) %></th>
+                        <% unless subj.gr_type.eql?('rating_data') %>
+                          <td><%= nully(subj.gr_type) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                        <td><%= nully(subj.grade) %></td>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="column">
+                  <table class="table is-center is-striped">
+                    <thead>
+                    <tr class="student-row">
+                      <th colspan="2">Семестр: <%= sem2&.first&.delete_suffix('/')  %></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% sem2&.last&.each do |subj| %>
+                      <tr class="student-row">
+                        <th><%= nully(subj.subj_name) %></th>
+                        <% unless subj.gr_type.eql?('rating_data') %>
+                          <td><%= nully(subj.gr_type) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                        <td><%= nully(subj.grade) %></td>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </section>
+    </div>
+  </div>
+<% else %>
+
+<% end %>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>
